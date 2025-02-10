@@ -57,6 +57,12 @@ button {
     border: 2px solid black;
     padding: 10px;
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-top: 20px;
+    background-color: #FDE4E4;
+}
+
+.sacramento-text {
+    font-family: 'Sacramento', cursive;
+    font-size: 32px;
 }

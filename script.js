@@ -1,18 +1,17 @@
 // Function to handle button click events
 function selectOption(option) {
     if (option === 'Tak') {
-        // Flash rainbow colors
         flashRainbowColors(function () {
-            document.getElementById('question').style.display = 'none'; // Hide the question
-            displayCatHeart(); // Display the cat-heart.gif
-            setBackground(); // Set background image
-            setTimeout(displayHuraText, 500); // Display "Huraaaaa!! :3" after a small delay
+            document.getElementById('question').style.display = 'none';
+            displayCatHeart();
+            setBackground();
+            setTimeout(displayHuraAndLoveText, 500);
         });
     } else if (option === 'Nie') {
         document.getElementById('Nie-button').innerText = 'Jesteś pewna?';
         var TakButton = document.getElementById('Tak-button');
         var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
+        var newSize = parseFloat(currentFontSize) * 2;
         TakButton.style.fontSize = newSize + 'px';
     }
 }
@@ -24,14 +23,14 @@ function flashRainbowColors(callback) {
     var interval = setInterval(function () {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 200); // Change color every 200 milliseconds
+    }, 200);
     setTimeout(function () {
         clearInterval(interval);
-        document.body.style.backgroundColor = ''; // Reset background color
+        document.body.style.backgroundColor = '';
         if (callback) {
             callback();
         }
-    }, 2000); // Flash colors for 2 seconds
+    }, 2000);
 }
 
 // Function to display the initial cat.gif
@@ -65,20 +64,27 @@ function setBackground() {
     document.body.style.backgroundRepeat = "no-repeat";
 }
 
-// Function to display "Huraaaaa!! :3" message
-function displayHuraText() {
+// Function to display "Huraaaaa!! :3" and "Kocham Cię <3" message under the cat-heart.gif
+function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
-    var textContainer = document.createElement('h1');
-    textContainer.innerText = 'Huraaaaa!! :3';
-    textContainer.className = 'header_text hura-message';
-    
-    // Style for the text
-    textContainer.style.color = '#800000'; // Text color
-    textContainer.style.border = '2px solid black'; // Black border
-    textContainer.style.padding = '10px'; // Padding around text
-    textContainer.style.display = 'inline-block'; // Maintain box structure
 
-    document.body.appendChild(textContainer);
+    var textContainer = document.createElement('div');
+    textContainer.className = 'hura-message';
+    
+    // Huraaaaa!! :3 text
+    var huraText = document.createElement('h1');
+    huraText.innerText = 'Huraaaaa!! :3';
+    huraText.className = 'sacramento-text'; // Apply Sacramento font
+
+    // Kocham Cię <3 text
+    var loveText = document.createElement('h2');
+    loveText.innerText = 'Kocham Cię <3';
+    loveText.className = 'sacramento-text'; // Apply Sacramento font
+
+    textContainer.appendChild(huraText);
+    textContainer.appendChild(loveText);
+    
+    document.getElementById('image-container').appendChild(textContainer);
 }
 
 // Display the initial cat.gif
