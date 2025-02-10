@@ -5,8 +5,8 @@ function selectOption(option) {
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none'; // Hide the question
             displayCatHeart(); // Display the cat-heart.gif
-            displayHuraText(); // Display "Huraaaaa!! :3"
             setBackground(); // Set background image
+            setTimeout(displayHuraText, 500); // Display "Huraaaaa!! :3" after a small delay
         });
     } else if (option === 'Nie') {
         document.getElementById('Nie-button').innerText = 'Jesteś pewna?';
