@@ -6,9 +6,9 @@ var nieMessages = [
     "No weź, nie bądź taka..",
     "Nie uda ci się odmówić :PP",
     "Klikaj już tak, Głuptasie :3",
-     "Co ty robisz >:(",
+    "Co ty robisz >:(",
     "Dobra, weź już kliknij, co? c:",
-    "wiedziałem, że cię przekonam :*"
+    "Wiedziałem, że cię przekonam :*"
 ];
 
 var nieClickCount = 0; // Count of "Nie" button clicks
@@ -29,18 +29,18 @@ function selectOption(option) {
 
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
+
     if (nieClickCount < maxNieClicks) {
-        nieButton.innerText = nieMessages[nieClickCount]; // Cycle through messages
-        nieButton.style.fontSize = (20 + nieClickCount * 10) + 'px'; // Gradually increase font size
+        nieButton.innerText = nieMessages[nieClickCount]; // Przejście do kolejnej wiadomości
         nieClickCount++;
     } else {
-        nieButton.style.pointerEvents = 'none'; // Disable click on the button
+        nieButton.style.pointerEvents = 'none'; // Wyłączenie możliwości kliknięcia przycisku
     }
 
-    // Grow the "Tak" button as well
+    // Powiększanie wyłącznie napisu "Tak"
     var TakButton = document.getElementById('Tak-button');
     var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
+    var newSize = parseFloat(currentFontSize) * 1.2; // Powiększenie rozmiaru czcionki o 20%
     TakButton.style.fontSize = newSize + 'px';
 }
 
@@ -97,6 +97,7 @@ function displayHuraAndLoveText() {
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text hura-text';
+    huraText.style.marginTop = '50px'; // Dodano margines górny, aby obniżyć tekst
 
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
