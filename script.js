@@ -1,3 +1,70 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: #FADADD;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#image-container {
+}
+
+#question {
+    font-family: 'Caveat', cursive;
+    font-size: 52px;
+}
+
+#options {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 26px;
+    font-family: 'Caveat', cursive;
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.message-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.caveat-text {
+    font-family: 'Caveat', cursive;
+    color: #FF0000;
+}
+
+.hura-text {
+    font-size: 32px;
+    position: absolute;
+    top: 280px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.love-text {
+    font-size: 28px;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// JavaScript
+
 // Text messages to show on each "Nie" button click
 var nieMessages = [
     "Nie",
@@ -17,8 +84,7 @@ function selectOption(option) {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
             setBackground();
-            setTimeout(displayHuraText, 500);
-            setTimeout(displayLoveText, 500); // Display love text separately
+            setTimeout(displayHuraAndLoveText, 500);
         });
     } else if (option === 'Nie') {
         handleNieClick();
@@ -82,96 +148,19 @@ function setBackground() {
     document.body.style.backgroundRepeat = "no-repeat";
 }
 
-function displayHuraText() {
-    if (document.querySelector('.hura-message')) return;
-
-    var messageContainer = document.createElement('div');
-    messageContainer.className = 'message-container';
+function displayHuraAndLoveText() {
+    if (document.querySelector('.hura-text')) return;
 
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text hura-text';
 
-    messageContainer.appendChild(huraText);
-
-    document.body.appendChild(messageContainer);
-}
-
-function displayLoveText() {
-    var loveTextContainer = document.createElement('div');
-    loveTextContainer.className = 'love-text-container';
-
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
 
-    loveTextContainer.appendChild(loveText);
-
-    document.body.appendChild(loveTextContainer);
+    document.body.appendChild(huraText);
+    document.body.appendChild(loveText);
 }
 
 displayCat();
-/* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    background-color: #FADADD;
-}
-
-#container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#image-container {
-}
-
-#question {
-    font-family: 'Caveat', cursive;
-    font-size: 52px;
-}
-
-#options {
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 26px;
-    font-family: 'Caveat', cursive;
-    background-color: #FB607F;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.message-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.caveat-text {
-    font-family: 'Caveat', cursive;
-    color: #FF0000; /* Set text color to bright red */
-}
-
-.hura-text {
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.love-text-container {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
-
-.love-text {
-    font-size: 28px;
-}
