@@ -30,11 +30,15 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
     nieClickCount++;
 
-    // Grow the "Tak" button with each "Nie" click
-    var TakButton = document.getElementById('Tak-button');
-    var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
-    TakButton.style.fontSize = newSize + 'px';
+    // Shrink the "Nie" button
+    var currentSize = parseFloat(window.getComputedStyle(nieButton).getPropertyValue('font-size'));
+    var newSize = currentSize * 0.8; // Decrease size by 20%
+    nieButton.style.fontSize = newSize + 'px';
+
+    // If the button gets too small, hide it
+    if (newSize < 10) {
+        nieButton.style.display = 'none';
+    }
 }
 
 function flashRainbowColors(callback) {
@@ -97,6 +101,10 @@ function displayHuraAndLoveText() {
 
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
+
+    // Add animation to the text
+    huraText.style.animation = "pulse 2s infinite";
+    loveText.style.animation = "fadeIn 2s forwards";
 
     // Find the target container where the "Huraaaaa!! :3" text should go
     var targetContainer = document.getElementById('image-container');
