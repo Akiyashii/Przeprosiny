@@ -19,6 +19,8 @@ function selectOption(option) {
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
         });
+
+        enlargeButton(document.getElementById('Tak-button')); // Powiększanie tylko przycisku "Tak"
     } else if (option === 'Nie') {
         handleNieClick();
     }
@@ -28,16 +30,16 @@ function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
     if (nieClickCount < maxNieClicks) {
         nieButton.innerText = nieMessages[nieClickCount];
-        nieButton.style.fontSize = (20 + nieClickCount * 10) + 'px';
         nieClickCount++;
     } else {
         nieButton.style.pointerEvents = 'none';
     }
+}
 
-    var TakButton = document.getElementById('Tak-button');
-    var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
+function enlargeButton(button) {
+    var currentFontSize = window.getComputedStyle(button).getPropertyValue('font-size');
     var newSize = parseFloat(currentFontSize) * 1.2;
-    TakButton.style.fontSize = newSize + 'px';
+    button.style.fontSize = newSize + 'px';
 }
 
 function flashRainbowColors(callback) {
