@@ -9,10 +9,8 @@ function selectOption(option) {
             displayHuraText(); // Display Huraaaaa!! :3 message
         });
     } else if (option === 'Nie') {
-        // Change text on the "Nie" button to "Jesteś pewna?"
         var nieButton = document.getElementById('Nie-button');
         nieButton.innerText = 'Jesteś pewna?';
-        // Increase font size of "Tak" button
         var takButton = document.getElementById('Tak-button');
         var currentFontSize = window.getComputedStyle(takButton).getPropertyValue('font-size');
         var newSize = parseFloat(currentFontSize) * 2; // Increase font size by 2x
