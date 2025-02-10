@@ -32,7 +32,6 @@ function increaseTakButtonSize() {
     var currentTakSize = parseFloat(window.getComputedStyle(takButton).fontSize);
     var newTakSize = currentTakSize * 1.15; // Zwiększ o 15% na kliknięcie
     takButton.style.fontSize = newTakSize + 'px';
-    takButton.disabled = true;  // Zablokuj przycisk "Tak" po kliknięciu
 }
 
 function handleNieClick() {
