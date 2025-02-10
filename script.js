@@ -68,6 +68,9 @@ function setBackground() {
 function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
 
+    var imageContainer = document.getElementById('image-container');
+
+    // Create a container for the text
     var textContainer = document.createElement('div');
     textContainer.className = 'hura-message';
 
@@ -84,7 +87,7 @@ function displayHuraAndLoveText() {
     textContainer.appendChild(huraText);
     textContainer.appendChild(loveText);
 
-    document.getElementById('image-container').appendChild(textContainer);
+    imageContainer.appendChild(textContainer);
 }
 
 // Display the initial cat.gif
