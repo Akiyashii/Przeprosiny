@@ -1,4 +1,16 @@
-// Function to handle button click events
+// Text messages to show on each "Nie" button click
+var nieMessages = [
+    "Nie",
+    "Jesteś pewna?",
+    "Czy aby na pewno?",
+    "Czemu mi to robisz :(",
+    "No weź, nie bądź taka..",
+    "Nie uda ci się odmówić :PP",
+    "Klikaj już tak, Głuptasie :3"
+];
+
+var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
+
 function selectOption(option) {
     if (option === 'Tak') {
         flashRainbowColors(function () {
@@ -8,15 +20,23 @@ function selectOption(option) {
             setTimeout(displayHuraAndLoveText, 500);
         });
     } else if (option === 'Nie') {
-        document.getElementById('Nie-button').innerText = 'Jesteś pewna?';
-        var TakButton = document.getElementById('Tak-button');
-        var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2;
-        TakButton.style.fontSize = newSize + 'px';
+        handleNieClick();
     }
 }
 
-// Function to flash rainbow colors and then execute a callback function
+// Function to handle "Nie" button click logic
+function handleNieClick() {
+    var nieButton = document.getElementById('Nie-button');
+    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
+    nieClickCount++;
+
+    // Grow the "Tak" button with each "Nie" click
+    var TakButton = document.getElementById('Tak-button');
+    var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
+    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
+    TakButton.style.fontSize = newSize + 'px';
+}
+
 function flashRainbowColors(callback) {
     var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     var i = 0;
@@ -33,7 +53,6 @@ function flashRainbowColors(callback) {
     }, 2000);
 }
 
-// Function to display the initial cat.gif
 function displayCat() {
     var imageContainer = document.getElementById('image-container');
     var catImage = new Image();
@@ -44,7 +63,6 @@ function displayCat() {
     };
 }
 
-// Function to display the cat-heart.gif
 function displayCatHeart() {
     document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
@@ -57,14 +75,12 @@ function displayCatHeart() {
     };
 }
 
-// Function to set the background image
 function setBackground() {
     document.body.style.backgroundImage = "url('tlo.PNG')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundRepeat = "no-repeat";
 }
 
-// Function to display "Huraaaaa!! :3" and "Kocham Cię <3" message under the cat-heart.gif
 function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
 
@@ -73,11 +89,11 @@ function displayHuraAndLoveText() {
 
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
-    huraText.className = 'caveat-text';
+    huraText.className = 'caveat-text hura-text';
 
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
-    loveText.className = 'caveat-text';
+    loveText.className = 'caveat-text love-text';
 
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
@@ -85,5 +101,4 @@ function displayHuraAndLoveText() {
     document.body.appendChild(messageContainer);
 }
 
-// Display the initial cat.gif
 displayCat();

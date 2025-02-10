@@ -44,6 +44,14 @@ button {
 
 .caveat-text {
     font-family: 'Caveat', cursive;
-    font-size: 32px;
     color: #800000;
+}
+
+.hura-text {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.love-text {
+    font-size: 28px;
 }
