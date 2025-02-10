@@ -4,9 +4,6 @@ body {
     text-align: center;
     margin: 0;
     background-color: #FADADD;
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
 }
 
 #container {
@@ -18,7 +15,6 @@ body {
 }
 
 #image-container {
-    margin-bottom: 20px; /* Odstęp poniżej obrazka */
 }
 
 #question {
@@ -41,23 +37,21 @@ button {
     cursor: pointer;
 }
 
+.message-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .caveat-text {
     font-family: 'Caveat', cursive;
-    color: #8B0000; /* Dark red */
+    color: #800000;
 }
 
 .hura-text {
-    position: absolute;
-    top: 45%; /* Odsunięcie od góry, aby było pod obrazkiem */
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 32px;
+    margin-bottom: 5px;
 }
 
 .love-text {
-    position: absolute;
-    bottom: 0%; /* Napis widoczny po przewinięciu */
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 28px;
 }
