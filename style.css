@@ -49,7 +49,7 @@ button {
 
 .hura-text {
     font-size: 32px;
-    margin-bottom: 5px;
+    margin-bottom: 50px; /* Add more space above the love text */
 }
 
 .love-text {
