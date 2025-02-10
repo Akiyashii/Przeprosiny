@@ -44,19 +44,19 @@ button {
 
 .caveat-text {
     font-family: 'Caveat', cursive;
-    color: #FF0000;
+    color: #FF0000; /* Set text color to bright red */
 }
 
 .hura-text {
     font-size: 32px;
     margin-bottom: 5px;
-    color: #FF69B4;
+    color: #FF69B4; /* Różowy */
     animation: pulse 2s infinite;
 }
 
 .love-text {
     font-size: 28px;
-    color: #FF1493;
+    color: #FF1493; /* Ciemny róż */
     opacity: 0;
 }
 
