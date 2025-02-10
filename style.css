@@ -1,49 +1,40 @@
-/* style.css */
-
+/* General body styling */
 body {
-    font-family: Arial, sans-serif; /* Fallback font family */
-    text-align: center; /* Center-align text */
-    margin: 0; /* Remove default margin */
-    background-color: #FADADD; /* Set background color to light pink */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: #FADADD;
 }
 
 #container {
-    display: flex; /* Use flexbox layout */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center-align items horizontally */
-    justify-content: center; /* Center-align items vertically */
-    height: 100vh; /* Make the container full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 #image-container {
-    /* This container will hold the images */
 }
 
 #question {
-    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the question */
-    font-size: 52px; /* Set font size for the question */
+    font-family: 'Sacramento', cursive;
+    font-size: 52px;
 }
 
 #options {
-    margin-top: 20px; /* Add space above the options */
+    margin-top: 20px;
 }
 
 button {
-    padding: 10px 20px; /* Set padding for buttons */
-    margin: 0 10px; /* Set margin around buttons */
-    font-size: 26px; /* Set font size for buttons */
-    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the options */
-    background-color: #FB607F; /* Set button background color */
-    color: white; /* Set text color to white */
-    border: none; /* Remove button border */
-    cursor: pointer; /* Set cursor to pointer on hover */
-}
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: rgb(189, 225, 122);
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 26px;
+    font-family: 'Sacramento', cursive;
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .header_text {
@@ -53,11 +44,18 @@ body {
     color: white;
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 0px;
 }
 
 .gif_container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hura-message {
+    color: #800000;
+    border: 2px solid black;
+    padding: 10px;
+    display: inline-block;
+    font-size: 2rem;
 }
