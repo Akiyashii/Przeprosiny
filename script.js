@@ -98,15 +98,11 @@ function displayHuraAndLoveText() {
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
+    loveText.style.opacity = 0; // Start hidden
 
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
 
-    // Add animation to the text
-    huraText.style.animation = "pulse 2s infinite";
-    loveText.style.animation = "fadeIn 2s forwards";
-
-    // Find the target container where the "Huraaaaa!! :3" text should go
     var targetContainer = document.getElementById('image-container');
     targetContainer.appendChild(messageContainer);
 
@@ -114,6 +110,11 @@ function displayHuraAndLoveText() {
     messageContainer.style.position = 'relative';
     messageContainer.style.marginTop = '10px';
     messageContainer.style.fontSize = '24px';
+
+    // Animate the "Kocham Cię <3" text with a 3-second delay
+    setTimeout(function () {
+        loveText.style.animation = "fadeIn 2s forwards";
+    }, 3000);
 }
 
 displayCat();
