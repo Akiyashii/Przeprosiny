@@ -1,4 +1,3 @@
-// Text messages to show on each "Nie" button click
 var nieMessages = [
     "Nie",
     "Jesteś pewna?",
@@ -18,27 +17,23 @@ function selectOption(option) {
             displayCatHeart();
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
+            setTimeout(displayNextSceneButton, 4000); // Dodanie przycisku do kolejnej sceny
         });
     } else if (option === 'Nie') {
         handleNieClick();
     }
 }
 
-// Function to handle "Nie" button click logic
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
     nieClickCount++;
 
-    // Shrink the "Nie" button
-    var currentSize = parseFloat(window.getComputedStyle(nieButton).getPropertyValue('font-size'));
-    var newSize = currentSize * 0.8; // Decrease size by 20%
-    nieButton.style.fontSize = newSize + 'px';
-
-    // If the button gets too small, hide it
-    if (newSize < 10) {
-        nieButton.style.display = 'none';
-    }
+    var TakButton = document.getElementById('Tak-button');
+    var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
+    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
+    TakButton.style.fontSize = newSize + 'px';
+    nieButton.style.fontSize = newSize + 'px'; // Zwiększ też "Nie"
 }
 
 function flashRainbowColors(callback) {
@@ -106,15 +101,33 @@ function displayHuraAndLoveText() {
     var targetContainer = document.getElementById('image-container');
     targetContainer.appendChild(messageContainer);
 
-    // Optional: Apply some styling to position it nicely inside the image container
     messageContainer.style.position = 'relative';
     messageContainer.style.marginTop = '10px';
     messageContainer.style.fontSize = '24px';
 
-    // Animate the "Kocham Cię <3" text with a 3-second delay
     setTimeout(function () {
         loveText.style.animation = "fadeIn 2s forwards";
     }, 3000);
+}
+
+function displayNextSceneButton() {
+    var nextButton = document.createElement('button');
+    nextButton.innerText = "Kliknij, aby zobaczyć niespodziankę!";
+    nextButton.className = 'next-scene-button';
+    nextButton.onclick = goToNextScene;
+    document.body.appendChild(nextButton);
+}
+
+function goToNextScene() {
+    document.body.innerHTML = ''; // Wyczyść aktualną zawartość
+    document.body.style.backgroundColor = '#FFB6C1'; // Walentynkowy kolor
+
+    var kotekImage = new Image();
+    kotekImage.src = 'kotek.png';
+    kotekImage.alt = 'Kotek z serduszkami';
+    kotekImage.className = 'kotek-image';
+
+    document.body.appendChild(kotekImage);
 }
 
 displayCat();
