@@ -17,7 +17,8 @@ function selectOption(option) {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
             setBackground();
-            setTimeout(displayHuraAndLoveText, 500);
+            setTimeout(displayHuraText, 500);
+            setTimeout(displayLoveText, 500); // Display love text separately
         });
     } else if (option === 'Nie') {
         handleNieClick();
@@ -81,7 +82,7 @@ function setBackground() {
     document.body.style.backgroundRepeat = "no-repeat";
 }
 
-function displayHuraAndLoveText() {
+function displayHuraText() {
     if (document.querySelector('.hura-message')) return;
 
     var messageContainer = document.createElement('div');
@@ -91,21 +92,86 @@ function displayHuraAndLoveText() {
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text hura-text';
 
+    messageContainer.appendChild(huraText);
+
+    document.body.appendChild(messageContainer);
+}
+
+function displayLoveText() {
+    var loveTextContainer = document.createElement('div');
+    loveTextContainer.className = 'love-text-container';
+
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
 
-    messageContainer.appendChild(huraText);
-    messageContainer.appendChild(loveText);
+    loveTextContainer.appendChild(loveText);
 
-    // Find the target container where the "Huraaaaa!! :3" text should go
-    var targetContainer = document.getElementById('image-container');
-    targetContainer.appendChild(messageContainer);
-
-    // Optional: Apply some styling to position it nicely inside the image container
-    messageContainer.style.position = 'relative';
-    messageContainer.style.marginTop = '10px';
-    messageContainer.style.fontSize = '24px';
+    document.body.appendChild(loveTextContainer);
 }
 
 displayCat();
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: #FADADD;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#image-container {
+}
+
+#question {
+    font-family: 'Caveat', cursive;
+    font-size: 52px;
+}
+
+#options {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 26px;
+    font-family: 'Caveat', cursive;
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.message-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.caveat-text {
+    font-family: 'Caveat', cursive;
+    color: #FF0000; /* Set text color to bright red */
+}
+
+.hura-text {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.love-text-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.love-text {
+    font-size: 28px;
+}
