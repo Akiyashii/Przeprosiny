@@ -8,7 +8,7 @@ var nieMessages = [
     "Klikaj już tak, Głuptasie :3"
 ];
 
-var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
+var nieClickCount = 0;
 
 function selectOption(option) {
     if (option === 'Tak') {
@@ -17,7 +17,7 @@ function selectOption(option) {
             displayCatHeart();
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
-            setTimeout(displayNextSceneButton, 4000); // Dodanie przycisku do kolejnej sceny
+            setTimeout(displayNextSceneButton, 4000);
         });
     } else if (option === 'Nie') {
         handleNieClick();
@@ -26,14 +26,23 @@ function selectOption(option) {
 
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
-    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
+    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
+    // Zmniejsz rozmiar przycisku
+    var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
+    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
+    nieButton.style.fontSize = newSize + 'px';
+
+    if (newSize <= 5) {
+        nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
+    }
+
+    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
-    var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
-    TakButton.style.fontSize = newSize + 'px';
-    nieButton.style.fontSize = newSize + 'px'; // Zwiększ też "Nie"
+    var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
+    var newTakSize = currentTakSize * 0.85;
+    TakButton.style.fontSize = newTakSize + 'px';
 }
 
 function flashRainbowColors(callback) {
@@ -93,17 +102,13 @@ function displayHuraAndLoveText() {
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
-    loveText.style.opacity = 0; // Start hidden
+    loveText.style.opacity = 0;
 
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
 
     var targetContainer = document.getElementById('image-container');
     targetContainer.appendChild(messageContainer);
-
-    messageContainer.style.position = 'relative';
-    messageContainer.style.marginTop = '10px';
-    messageContainer.style.fontSize = '24px';
 
     setTimeout(function () {
         loveText.style.animation = "fadeIn 2s forwards";
@@ -112,15 +117,15 @@ function displayHuraAndLoveText() {
 
 function displayNextSceneButton() {
     var nextButton = document.createElement('button');
-    nextButton.innerText = "Kliknij, aby zobaczyć niespodziankę!";
+    nextButton.innerText = "Chciałbym ci jeszcze powiedzieć kilka słów od serca c:";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
     document.body.appendChild(nextButton);
 }
 
 function goToNextScene() {
-    document.body.innerHTML = ''; // Wyczyść aktualną zawartość
-    document.body.style.backgroundColor = '#FFB6C1'; // Walentynkowy kolor
+    document.body.innerHTML = '';
+    document.body.style.backgroundColor = '#FFB6C1';
 
     var kotekImage = new Image();
     kotekImage.src = 'kotek.png';
