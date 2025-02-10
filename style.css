@@ -50,8 +50,31 @@ button {
 .hura-text {
     font-size: 32px;
     margin-bottom: 5px;
+    color: #FF69B4; /* Różowy */
+    animation: pulse 2s infinite;
 }
 
 .love-text {
     font-size: 28px;
+    color: #FF1493; /* Ciemny róż */
+    animation: fadeIn 2s forwards;
+}
+
+/* Animacje */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
