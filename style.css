@@ -29,7 +29,7 @@ body {
 button {
     padding: 10px 20px;
     margin: 0 10px;
-    font-size: 26px;
+    font-size: 39px;
     font-family: 'Caveat', cursive;
     background-color: #FB607F;
     color: white;
@@ -58,6 +58,22 @@ button {
     font-size: 28px;
     color: #FF1493; /* Ciemny róż */
     opacity: 0;
+}
+
+.next-scene-button {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.kotek-image {
+    max-width: 300px;
+    margin-top: 50px;
 }
 
 /* Animacje */
