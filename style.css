@@ -44,7 +44,7 @@ button {
 
 .caveat-text {
     font-family: 'Caveat', cursive;
-    color: #800000;
+    color: #FF0000; /* Set text color to bright red */
 }
 
 .hura-text {
