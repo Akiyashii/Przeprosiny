@@ -1,4 +1,4 @@
-// Text messages to show on each "Nie" button click
+// Teksty komunikatów na kliknięcia przycisku "Nie"
 var nieMessages = [
     "Nie",
     "Jesteś pewna?",
@@ -6,15 +6,16 @@ var nieMessages = [
     "Czemu mi to robisz :(",
     "No weź, nie bądź taka..",
     "Nie uda ci się odmówić :PP",
-    "Klikaj już tak, Głuptasie :3"
-"Dla mnie nie klikniesz? :C",
-"I tak to zrobisz :PP"/
-"Prędzej czy później wymiękniesz!",
-"Dobra nie wygłupiaj się i klikaj :3"
+    "Klikaj już tak, Głuptasie :3",
+    "Dla mnie nie klikniesz? :C",
+    "I tak to zrobisz :PP",
+    "Prędzej czy później wymiękniesz!",
+    "Dobra nie wygłupiaj się i klikaj :3"
 ];
 
-var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
+var nieClickCount = 0; // Licznik kliknięć przycisku "Nie"
 
+// Funkcja wyboru opcji
 function selectOption(option) {
     if (option === 'Tak') {
         flashRainbowColors(function () {
@@ -28,19 +29,24 @@ function selectOption(option) {
     }
 }
 
-// Function to handle "Nie" button click logic
+// Obsługa kliknięcia przycisku "Nie"
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
-    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
+    if (!nieButton) return; // Sprawdź, czy element istnieje
+
+    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Zmiana tekstu
     nieClickCount++;
 
-    // Grow the "Tak" button with each "Nie" click
+    // Powiększanie przycisku "Tak"
     var TakButton = document.getElementById('Tak-button');
+    if (!TakButton) return; // Sprawdź, czy element istnieje
+
     var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
+    var newSize = parseFloat(currentFontSize) * 1.2; // Zwiększ rozmiar czcionki o 20%
     TakButton.style.fontSize = newSize + 'px';
 }
 
+// Miganie kolorami tęczy
 function flashRainbowColors(callback) {
     var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     var i = 0;
@@ -57,8 +63,12 @@ function flashRainbowColors(callback) {
     }, 2000);
 }
 
+// Wyświetlanie obrazka kota
 function displayCat() {
     var imageContainer = document.getElementById('image-container');
+    if (!imageContainer) return; // Sprawdź, czy element istnieje
+
+    imageContainer.innerHTML = ''; // Usuń wcześniejsze zawartości
     var catImage = new Image();
     catImage.src = 'cat.gif';
     catImage.alt = 'Cat';
@@ -67,24 +77,32 @@ function displayCat() {
     };
 }
 
+// Wyświetlanie obrazka kota z sercem
 function displayCatHeart() {
-    document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
+    if (!imageContainer) return; // Sprawdź, czy element istnieje
+
+    imageContainer.innerHTML = ''; // Wyczyść zawartość
     var catHeartImage = new Image();
     catHeartImage.src = 'cat-heart.gif';
     catHeartImage.alt = 'Cat Heart';
     catHeartImage.onload = function () {
         imageContainer.appendChild(catHeartImage);
-        document.getElementById('options').style.display = 'none';
+        var optionsContainer = document.getElementById('options');
+        if (optionsContainer) {
+            optionsContainer.style.display = 'none';
+        }
     };
 }
 
+// Ustawienie tła
 function setBackground() {
     document.body.style.backgroundImage = "url('tlo.PNG')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundRepeat = "no-repeat";
 }
 
+// Wyświetlanie tekstu "Huraaaa!! :3" i "Kocham Cię <3"
 function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
 
@@ -102,14 +120,17 @@ function displayHuraAndLoveText() {
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
 
-    // Find the target container where the "Huraaaaa!! :3" text should go
     var targetContainer = document.getElementById('image-container');
+    if (!targetContainer) return;
+
     targetContainer.appendChild(messageContainer);
 
-    // Optional: Apply some styling to position it nicely inside the image container
     messageContainer.style.position = 'relative';
     messageContainer.style.marginTop = '10px';
     messageContainer.style.fontSize = '24px';
 }
 
-displayCat();
+// Początkowe wyświetlenie kota po załadowaniu DOM
+document.addEventListener('DOMContentLoaded', function () {
+    displayCat();
+});
