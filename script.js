@@ -1,38 +1,20 @@
 // Function to handle button click events
 function selectOption(option) {
     if (option === 'Tak') {
-        setBackgroundImage(); // Ustaw tło na obrazek na początku
+        // Flash rainbow colors
         flashRainbowColors(function () {
-            document.getElementById('question').style.display = 'none'; 
-            document.getElementById('options').style.display = 'none'; 
-            displayCatHeart(); 
-            displayHuraText(); 
+            document.getElementById('question').style.display = 'none'; // Hide the question
+            displayCatHeart(); // Display the cat-heart.gif
+            displayHuraText(); // Display "Huraaaaa!! :3"
+            setBackground(); // Set background image
         });
     } else if (option === 'Nie') {
-        var nieButton = document.getElementById('Nie-button');
-        nieButton.innerText = 'Jesteś pewna?';
-        var takButton = document.getElementById('Tak-button');
-        var currentFontSize = window.getComputedStyle(takButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2;
-        takButton.style.fontSize = newSize + 'px';
+        document.getElementById('Nie-button').innerText = 'Jesteś pewna?';
+        var TakButton = document.getElementById('Tak-button');
+        var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
+        TakButton.style.fontSize = newSize + 'px';
     }
-}
-
-// Function to display "Huraaaaa!! :3" message
-function displayHuraText() {
-    if (document.querySelector('.hura-message')) return;
-    var textContainer = document.createElement('h1');
-    textContainer.innerText = 'Huraaaaa!! :3';
-    textContainer.className = 'header_text hura-message';
-    document.body.appendChild(textContainer);
-}
-
-// Function to set the background image
-function setBackgroundImage() {
-    document.body.style.backgroundImage = "url('tlo.PNG')";
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundAttachment = 'fixed'; // Zapewnia stałe tło
 }
 
 // Function to flash rainbow colors and then execute a callback function
@@ -42,14 +24,14 @@ function flashRainbowColors(callback) {
     var interval = setInterval(function () {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 200);
+    }, 200); // Change color every 200 milliseconds
     setTimeout(function () {
         clearInterval(interval);
-        document.body.style.backgroundColor = 'transparent'; // Ustaw tło na przezroczyste, nie resetuj obrazka
+        document.body.style.backgroundColor = ''; // Reset background color
         if (callback) {
             callback();
         }
-    }, 2000);
+    }, 2000); // Flash colors for 2 seconds
 }
 
 // Function to display the cat.gif initially
@@ -72,8 +54,32 @@ function displayCatHeart() {
     catHeartImage.alt = 'Cat Heart';
     catHeartImage.onload = function () {
         imageContainer.appendChild(catHeartImage);
+        document.getElementById('options').style.display = 'none';
     };
 }
 
-// Display the cat.gif initially
+// Function to set the background image
+function setBackground() {
+    document.body.style.backgroundImage = "url('tlo.PNG')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
+}
+
+// Function to display "Huraaaaa!! :3" message
+function displayHuraText() {
+    if (document.querySelector('.hura-message')) return;
+    var textContainer = document.createElement('h1');
+    textContainer.innerText = 'Huraaaaa!! :3';
+    textContainer.className = 'header_text hura-message';
+    
+    // Style for the text
+    textContainer.style.color = '#800000'; // Text color
+    textContainer.style.border = '2px solid black'; // Black border
+    textContainer.style.padding = '10px'; // Padding around text
+    textContainer.style.display = 'inline-block'; // Maintain box structure
+
+    document.body.appendChild(textContainer);
+}
+
+// Display the initial cat.gif
 displayCat();
