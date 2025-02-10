@@ -1,4 +1,3 @@
-// Text messages to show on each "Nie" button click
 var nieMessages = [
     "Nie",
     "Jesteś pewna?",
@@ -9,7 +8,8 @@ var nieMessages = [
     "Klikaj już tak, Głuptasie :3"
 ];
 
-var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
+var nieClickCount = 0; // Count of "Nie" button clicks
+var maxNieClicks = nieMessages.length;
 
 function selectOption(option) {
     if (option === 'Tak') {
@@ -24,13 +24,17 @@ function selectOption(option) {
     }
 }
 
-// Function to handle "Nie" button click logic
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
-    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
-    nieClickCount++;
+    if (nieClickCount < maxNieClicks) {
+        nieButton.innerText = nieMessages[nieClickCount]; // Cycle through messages
+        nieButton.style.fontSize = (20 + nieClickCount * 10) + 'px'; // Gradually increase font size
+        nieClickCount++;
+    } else {
+        nieButton.style.pointerEvents = 'none'; // Disable click on the button
+    }
 
-    // Grow the "Tak" button with each "Nie" click
+    // Grow the "Tak" button as well
     var TakButton = document.getElementById('Tak-button');
     var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
     var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
