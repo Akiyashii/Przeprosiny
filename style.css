@@ -4,6 +4,9 @@ body {
     text-align: center;
     margin: 0;
     background-color: #FADADD;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 #container {
@@ -37,21 +40,23 @@ button {
     cursor: pointer;
 }
 
-.message-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
 .caveat-text {
     font-family: 'Caveat', cursive;
-    color: #800000;
+    color: #8B0000; /* Dark red */
 }
 
 .hura-text {
+    position: absolute;
+    top: 35%; /* Place text near the middle */
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 32px;
-    margin-bottom: 50px; /* Add more space above the love text */
 }
 
 .love-text {
+    position: absolute;
+    bottom: 5%; /* Place text at the very bottom */
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 28px;
 }
