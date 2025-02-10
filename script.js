@@ -1,29 +1,37 @@
 // Function to handle button click events
 function selectOption(option) {
     if (option === 'Tak') {
-        // Flash rainbow colors
         flashRainbowColors(function () {
-            document.getElementById('question').style.display = 'none'; // Hide the question
-            document.getElementById('options').style.display = 'none'; // Hide the options container
-            displayCatHeart(); // Display the cat-heart.gif
-            displayHuraText(); // Display Huraaaaa!! :3 message
+            document.getElementById('question').style.display = 'none'; 
+            document.getElementById('options').style.display = 'none'; 
+            displayCatHeart(); 
+            displayHuraText(); 
+            setBackgroundImage(); // Ustaw tło na obrazek
         });
     } else if (option === 'Nie') {
         var nieButton = document.getElementById('Nie-button');
         nieButton.innerText = 'Jesteś pewna?';
         var takButton = document.getElementById('Tak-button');
         var currentFontSize = window.getComputedStyle(takButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by 2x
+        var newSize = parseFloat(currentFontSize) * 2;
         takButton.style.fontSize = newSize + 'px';
     }
 }
 
-// Function to display Huraaaaa!! :3 message
+// Function to display "Huraaaaa!! :3" message
 function displayHuraText() {
+    if (document.querySelector('.hura-message')) return;
     var textContainer = document.createElement('h1');
     textContainer.innerText = 'Huraaaaa!! :3';
-    textContainer.className = 'header_text'; // Apply predefined style from CSS
+    textContainer.className = 'header_text hura-message';
     document.body.appendChild(textContainer);
+}
+
+// Function to set the background image
+function setBackgroundImage() {
+    document.body.style.backgroundImage = "url('tlo.PNG')";
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
 }
 
 // Function to flash rainbow colors and then execute a callback function
@@ -33,14 +41,14 @@ function flashRainbowColors(callback) {
     var interval = setInterval(function () {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 200); // Change color every 200 milliseconds
+    }, 200);
     setTimeout(function () {
         clearInterval(interval);
-        document.body.style.backgroundColor = ''; // Reset background color
+        document.body.style.backgroundColor = '';
         if (callback) {
             callback();
         }
-    }, 2000); // Flash colors for 2 seconds
+    }, 2000);
 }
 
 // Function to display the cat.gif initially
