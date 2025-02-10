@@ -53,13 +53,7 @@ button {
 }
 
 .hura-message {
-    color: #800000;
-    border: 2px solid black;
-    padding: 10px;
-    display: inline-block;
-    font-size: 1.8rem;
-    margin-top: 20px;
-    background-color: #FDE4E4;
+    margin-top: 10px;
     text-align: center;
 }
 
