@@ -8,7 +8,7 @@ var nieMessages = [
     "Klikaj już tak, Głuptasie :3"
 ];
 
-var nieClickCount = 0; // Count of "Nie" button clicks
+var nieClickCount = 0;
 var maxNieClicks = nieMessages.length;
 
 function selectOption(option) {
@@ -27,17 +27,16 @@ function selectOption(option) {
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
     if (nieClickCount < maxNieClicks) {
-        nieButton.innerText = nieMessages[nieClickCount]; // Cycle through messages
-        nieButton.style.fontSize = (20 + nieClickCount * 10) + 'px'; // Gradually increase font size
+        nieButton.innerText = nieMessages[nieClickCount];
+        nieButton.style.fontSize = (20 + nieClickCount * 10) + 'px';
         nieClickCount++;
     } else {
-        nieButton.style.pointerEvents = 'none'; // Disable click on the button
+        nieButton.style.pointerEvents = 'none';
     }
 
-    // Grow the "Tak" button as well
     var TakButton = document.getElementById('Tak-button');
     var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
+    var newSize = parseFloat(currentFontSize) * 1.2;
     TakButton.style.fontSize = newSize + 'px';
 }
 
@@ -88,9 +87,6 @@ function setBackground() {
 function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
 
-    var messageContainer = document.createElement('div');
-    messageContainer.className = 'message-container';
-
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text hura-text';
@@ -99,10 +95,8 @@ function displayHuraAndLoveText() {
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
 
-    messageContainer.appendChild(huraText);
-    messageContainer.appendChild(loveText);
-
-    document.body.appendChild(messageContainer);
+    document.body.appendChild(huraText);
+    document.body.appendChild(loveText);
 }
 
 displayCat();
