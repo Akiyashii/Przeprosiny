@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="./Tak.html">
-        
-    </head> 
-    <body>
-        <div class="container">
-            <div >
-                <h1 class = "header_text">Hurrayyyy!!</h1>
-            </div>
-            </div>
-        </div>
-       
-    </body> 
+<html>
+  <body>
+    <button onclick="click1()">Tak</button>
+    <div id="content"></div> <!-- Miejsce na dynamicznie ładowaną zawartość -->
+
+    <script>
+      var one = 0;  // Zainicjowanie zmiennej `one`
+
+      function click1() {
+        one += 1;  // Zwiększamy wartość zmiennej `one` o 1
+
+        if (one == 1) {
+          // Jeśli `one` równa się 1, załaduj zawartość z pliku `Tak.html`
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'Tak.html', true);  // Otwórz plik Tak.html
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              // Wstaw zawartość do div o id "content", zamiast zmieniać całe body
+              document.getElementById("content").innerHTML = xhr.responseText;
+            }
+          };
+          xhr.send();
+        }
+      }
+    </script>
+  </body>
 </html>
