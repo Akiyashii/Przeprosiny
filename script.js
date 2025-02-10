@@ -7,6 +7,10 @@ var nieMessages = [
     "No weź, nie bądź taka..",
     "Nie uda ci się odmówić :PP",
     "Klikaj już tak, Głuptasie :3"
+"Dla mnie nie klikniesz? :C",
+"I tak to zrobisz :PP"/
+"Prędzej czy później wymiękniesz!",
+"Dobra nie wygłupiaj się i klikaj :3"
 ];
 
 var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
