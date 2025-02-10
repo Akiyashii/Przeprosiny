@@ -9,10 +9,11 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
-var takClickCount = 0;
+var takClicked = false;  // Flaga sprawdzająca, czy "Tak" zostało kliknięte
 
 function selectOption(option) {
-    if (option === 'Tak') {
+    if (option === 'Tak' && !takClicked) {  // Sprawdzamy, czy "Tak" jeszcze nie zostało kliknięte
+        takClicked = true;  // Zmieniamy flagę, by "Tak" można było kliknąć tylko raz
         increaseTakButtonSize();  // Zwiększ rozmiar "Tak"
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
@@ -22,15 +23,16 @@ function selectOption(option) {
             setTimeout(displayNextSceneButton, 4000);
         });
     } else if (option === 'Nie') {
-        handleNieClick();
+        handleNieClick();  // Obsługuje kliknięcie "Nie"
     }
 }
 
 function increaseTakButtonSize() {
     var takButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(takButton).fontSize);
-    var newTakSize = currentTakSize * 1.10; // Zwiększ o 10% na kliknięcie
+    var newTakSize = currentTakSize * 1.15; // Zwiększ o 15% na kliknięcie
     takButton.style.fontSize = newTakSize + 'px';
+    takButton.disabled = true;  // Zablokuj przycisk "Tak" po kliknięciu
 }
 
 function handleNieClick() {
@@ -38,14 +40,16 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku "Nie"
+    // Zmniejsz rozmiar przycisku "Nie" o 15%
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
-    var newSize = currentFontSize * 0.90; // Zmniejsz o 10% na kliknięcie
+    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
 
     if (newSize <= 5) {
         nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
     }
+
+    increaseTakButtonSize();  // Powiększ przycisk "Tak" po kliknięciu "Nie"
 }
 
 function flashRainbowColors(callback) {
