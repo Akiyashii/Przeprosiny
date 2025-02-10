@@ -1,24 +1,22 @@
 // Function to handle button click events
 function selectOption(option) {
-    // Check which option was clicked
     if (option === 'Tak') {
         // Flash rainbow colors
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none'; // Hide the question
+            document.getElementById('options').style.display = 'none'; // Hide the options container
             displayCatHeart(); // Display the cat-heart.gif
             displayHuraText(); // Display Huraaaaa!! :3 message
         });
     } else if (option === 'Nie') {
         // Change text on the "Nie" button to "Jesteś pewna?"
-        document.getElementById('Nie-button').innerText = 'Jesteś pewna?';
+        var nieButton = document.getElementById('Nie-button');
+        nieButton.innerText = 'Jesteś pewna?';
         // Increase font size of "Tak" button
-        var TakButton = document.getElementById('Tak-button');
-        var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
-        TakButton.style.fontSize = newSize + 'px';
-    } else {
-        // If neither "Tak" nor "Nie" was clicked, show an alert message
-        alert('Invalid option!');
+        var takButton = document.getElementById('Tak-button');
+        var currentFontSize = window.getComputedStyle(takButton).getPropertyValue('font-size');
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by 2x
+        takButton.style.fontSize = newSize + 'px';
     }
 }
 
@@ -67,10 +65,8 @@ function displayCatHeart() {
     catHeartImage.alt = 'Cat Heart';
     catHeartImage.onload = function () {
         imageContainer.appendChild(catHeartImage);
-        document.getElementById('options').style.display = 'none';
     };
 }
 
 // Display the cat.gif initially
 displayCat();
-
