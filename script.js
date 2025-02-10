@@ -68,26 +68,21 @@ function setBackground() {
 function displayHuraAndLoveText() {
     if (document.querySelector('.hura-message')) return;
 
-    var imageContainer = document.getElementById('image-container');
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'message-container';
 
-    // Create a container for the text
-    var textContainer = document.createElement('div');
-    textContainer.className = 'hura-message';
-
-    // Huraaaaa!! :3 text
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text';
 
-    // Kocham Cię <3 text
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text';
 
-    textContainer.appendChild(huraText);
-    textContainer.appendChild(loveText);
+    messageContainer.appendChild(huraText);
+    messageContainer.appendChild(loveText);
 
-    imageContainer.appendChild(textContainer);
+    document.body.appendChild(messageContainer);
 }
 
 // Display the initial cat.gif

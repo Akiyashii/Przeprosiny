@@ -37,24 +37,9 @@ button {
     cursor: pointer;
 }
 
-.header_text {
-    font-family: 'Nunito';
-    font-size: 50px;
-    font-weight: bold;
-    color: white;
+.message-container {
     text-align: center;
     margin-top: 20px;
-}
-
-.gif_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hura-message {
-    margin-top: 10px;
-    text-align: center;
 }
 
 .caveat-text {
