@@ -1,3 +1,4 @@
+// Text messages to show on each "Nie" button click
 var nieMessages = [
     "Nie",
     "Jesteś pewna?",
@@ -5,14 +6,10 @@ var nieMessages = [
     "Czemu mi to robisz :(",
     "No weź, nie bądź taka..",
     "Nie uda ci się odmówić :PP",
-    "Klikaj już tak, Głuptasie :3",
-    "Co ty robisz >:(",
-    "Dobra, weź już kliknij, co? c:",
-    "Wiedziałem, że cię przekonam :*"
+    "Klikaj już tak, Głuptasie :3"
 ];
 
-var nieClickCount = 0; // Count of "Nie" button clicks
-var maxNieClicks = nieMessages.length;
+var nieClickCount = 0; // Keep track of how many times "Nie" is clicked
 
 function selectOption(option) {
     if (option === 'Tak') {
@@ -27,20 +24,16 @@ function selectOption(option) {
     }
 }
 
+// Function to handle "Nie" button click logic
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
+    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; // Cycle through messages
+    nieClickCount++;
 
-    if (nieClickCount < maxNieClicks) {
-        nieButton.innerText = nieMessages[nieClickCount]; // Przejście do kolejnej wiadomości
-        nieClickCount++;
-    } else {
-        nieButton.style.pointerEvents = 'none'; // Wyłączenie możliwości kliknięcia przycisku
-    }
-
-    // Powiększanie wyłącznie napisu "Tak"
+    // Grow the "Tak" button with each "Nie" click
     var TakButton = document.getElementById('Tak-button');
     var currentFontSize = window.getComputedStyle(TakButton).getPropertyValue('font-size');
-    var newSize = parseFloat(currentFontSize) * 1.2; // Powiększenie rozmiaru czcionki o 20%
+    var newSize = parseFloat(currentFontSize) * 1.2; // Increase font size by 20%
     TakButton.style.fontSize = newSize + 'px';
 }
 
@@ -97,7 +90,6 @@ function displayHuraAndLoveText() {
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
     huraText.className = 'caveat-text hura-text';
-    huraText.style.marginTop = '50px'; // Dodano margines górny, aby obniżyć tekst
 
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
