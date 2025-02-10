@@ -98,7 +98,14 @@ function displayHuraAndLoveText() {
     messageContainer.appendChild(huraText);
     messageContainer.appendChild(loveText);
 
-    document.body.appendChild(messageContainer);
+    // Find the target container where the "Huraaaaa!! :3" text should go
+    var targetContainer = document.getElementById('image-container');
+    targetContainer.appendChild(messageContainer);
+
+    // Optional: Apply some styling to position it nicely inside the image container
+    messageContainer.style.position = 'relative';
+    messageContainer.style.marginTop = '10px';
+    messageContainer.style.fontSize = '24px';
 }
 
 displayCat();
