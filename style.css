@@ -57,7 +57,7 @@ button {
 .love-text {
     font-size: 28px;
     color: #FF1493; /* Ciemny róż */
-    animation: fadeIn 2s forwards;
+    opacity: 0;
 }
 
 /* Animacje */
