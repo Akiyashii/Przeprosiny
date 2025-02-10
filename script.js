@@ -9,6 +9,7 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
+var takClickCount = 0;
 
 function selectOption(option) {
     if (option === 'Tak') {
@@ -28,7 +29,7 @@ function selectOption(option) {
 function increaseTakButtonSize() {
     var takButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(takButton).fontSize);
-    var newTakSize = currentTakSize * 1.15; // Zwiększ o 15% na kliknięcie
+    var newTakSize = currentTakSize * 1.10; // Zwiększ o 10% na kliknięcie
     takButton.style.fontSize = newTakSize + 'px';
 }
 
@@ -37,9 +38,9 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku "Nie" o 15%
+    // Zmniejsz rozmiar przycisku "Nie"
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
-    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
+    var newSize = currentFontSize * 0.90; // Zmniejsz o 10% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
 
     if (newSize <= 5) {
