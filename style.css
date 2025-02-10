@@ -6,7 +6,7 @@ body {
     background-color: #FADADD;
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #container {
@@ -18,6 +18,7 @@ body {
 }
 
 #image-container {
+    margin-bottom: 20px; /* Odstęp poniżej obrazka */
 }
 
 #question {
@@ -47,7 +48,7 @@ button {
 
 .hura-text {
     position: absolute;
-    top: 35%; /* Place text near the middle */
+    top: 45%; /* Odsunięcie od góry, aby było pod obrazkiem */
     left: 50%;
     transform: translateX(-50%);
     font-size: 32px;
@@ -55,7 +56,7 @@ button {
 
 .love-text {
     position: absolute;
-    bottom: 5%; /* Place text at the very bottom */
+    bottom: 0%; /* Napis widoczny po przewinięciu */
     left: 50%;
     transform: translateX(-50%);
     font-size: 28px;
