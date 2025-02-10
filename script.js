@@ -1,12 +1,12 @@
 // Function to handle button click events
 function selectOption(option) {
     if (option === 'Tak') {
+        setBackgroundImage(); // Ustaw tło na obrazek na początku
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none'; 
             document.getElementById('options').style.display = 'none'; 
             displayCatHeart(); 
             displayHuraText(); 
-            setBackgroundImage(); // Ustaw tło na obrazek
         });
     } else if (option === 'Nie') {
         var nieButton = document.getElementById('Nie-button');
@@ -32,6 +32,7 @@ function setBackgroundImage() {
     document.body.style.backgroundImage = "url('tlo.PNG')";
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed'; // Zapewnia stałe tło
 }
 
 // Function to flash rainbow colors and then execute a callback function
@@ -44,7 +45,7 @@ function flashRainbowColors(callback) {
     }, 200);
     setTimeout(function () {
         clearInterval(interval);
-        document.body.style.backgroundColor = '';
+        document.body.style.backgroundColor = 'transparent'; // Ustaw tło na przezroczyste, nie resetuj obrazka
         if (callback) {
             callback();
         }
