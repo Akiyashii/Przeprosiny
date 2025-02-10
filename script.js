@@ -9,12 +9,11 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
-var takClicked = false;  // Flaga sprawdzająca, czy "Tak" zostało kliknięte
+var takClicked = false; // Flaga do kontrolowania, czy przycisk "Tak" został już kliknięty.
 
 function selectOption(option) {
-    if (option === 'Tak' && !takClicked) {  // Sprawdzamy, czy "Tak" jeszcze nie zostało kliknięte
-        takClicked = true;  // Zmieniamy flagę, by "Tak" można było kliknąć tylko raz
-        increaseTakButtonSize();  // Zwiększ rozmiar "Tak"
+    if (option === 'Tak' && !takClicked) {
+        takClicked = true; // Ustaw flagę na true, aby blokować dalsze kliknięcia "Tak"
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
@@ -23,15 +22,8 @@ function selectOption(option) {
             setTimeout(displayNextSceneButton, 4000);
         });
     } else if (option === 'Nie') {
-        handleNieClick();  // Obsługuje kliknięcie "Nie"
+        handleNieClick();
     }
-}
-
-function increaseTakButtonSize() {
-    var takButton = document.getElementById('Tak-button');
-    var currentTakSize = parseFloat(window.getComputedStyle(takButton).fontSize);
-    var newTakSize = currentTakSize * 1.15; // Zwiększ o 15% na kliknięcie
-    takButton.style.fontSize = newTakSize + 'px';
 }
 
 function handleNieClick() {
@@ -39,7 +31,7 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku "Nie" o 15%
+    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
     var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
@@ -48,7 +40,11 @@ function handleNieClick() {
         nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
     }
 
-    increaseTakButtonSize();  // Powiększ przycisk "Tak" po kliknięciu "Nie"
+    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
+    var TakButton = document.getElementById('Tak-button');
+    var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
+    var newTakSize = currentTakSize * 1.15; // Powiększ o 15% przy każdym kliknięciu "Nie"
+    TakButton.style.fontSize = newTakSize + 'px';
 }
 
 function flashRainbowColors(callback) {
