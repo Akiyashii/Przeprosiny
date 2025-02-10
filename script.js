@@ -1,70 +1,3 @@
-/* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    background-color: #FADADD;
-}
-
-#container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#image-container {
-}
-
-#question {
-    font-family: 'Caveat', cursive;
-    font-size: 52px;
-}
-
-#options {
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 26px;
-    font-family: 'Caveat', cursive;
-    background-color: #FB607F;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.message-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.caveat-text {
-    font-family: 'Caveat', cursive;
-    color: #FF0000;
-}
-
-.hura-text {
-    font-size: 32px;
-    position: absolute;
-    top: 280px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.love-text {
-    font-size: 28px;
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-// JavaScript
-
 // Text messages to show on each "Nie" button click
 var nieMessages = [
     "Nie",
@@ -149,7 +82,10 @@ function setBackground() {
 }
 
 function displayHuraAndLoveText() {
-    if (document.querySelector('.hura-text')) return;
+    if (document.querySelector('.hura-message')) return;
+
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'message-container';
 
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
@@ -159,8 +95,17 @@ function displayHuraAndLoveText() {
     loveText.innerText = 'Kocham Cię <3';
     loveText.className = 'caveat-text love-text';
 
-    document.body.appendChild(huraText);
-    document.body.appendChild(loveText);
+    messageContainer.appendChild(huraText);
+    messageContainer.appendChild(loveText);
+
+    // Find the target container where the "Huraaaaa!! :3" text should go
+    var targetContainer = document.getElementById('image-container');
+    targetContainer.appendChild(messageContainer);
+
+    // Optional: Apply some styling to position it nicely inside the image container
+    messageContainer.style.position = 'relative';
+    messageContainer.style.marginTop = '10px';
+    messageContainer.style.fontSize = '24px';
 }
 
 displayCat();
