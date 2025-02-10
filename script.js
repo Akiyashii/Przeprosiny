@@ -70,20 +70,20 @@ function displayHuraAndLoveText() {
 
     var textContainer = document.createElement('div');
     textContainer.className = 'hura-message';
-    
+
     // Huraaaaa!! :3 text
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
-    huraText.className = 'sacramento-text'; // Apply Sacramento font
+    huraText.className = 'caveat-text';
 
     // Kocham Cię <3 text
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
-    loveText.className = 'sacramento-text'; // Apply Sacramento font
+    loveText.className = 'caveat-text';
 
     textContainer.appendChild(huraText);
     textContainer.appendChild(loveText);
-    
+
     document.getElementById('image-container').appendChild(textContainer);
 }
 

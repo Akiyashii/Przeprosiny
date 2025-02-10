@@ -18,7 +18,7 @@ body {
 }
 
 #question {
-    font-family: 'Sacramento', cursive;
+    font-family: 'Caveat', cursive;
     font-size: 52px;
 }
 
@@ -30,7 +30,7 @@ button {
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 26px;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Caveat', cursive;
     background-color: #FB607F;
     color: white;
     border: none;
@@ -60,9 +60,10 @@ button {
     font-size: 1.8rem;
     margin-top: 20px;
     background-color: #FDE4E4;
+    text-align: center;
 }
 
-.sacramento-text {
-    font-family: 'Sacramento', cursive;
+.caveat-text {
+    font-family: 'Caveat', cursive;
     font-size: 32px;
 }
