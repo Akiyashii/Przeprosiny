@@ -12,18 +12,24 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    position: relative; /* Umożliwia użycie z-index dla dzieci */
 }
 
 #image-container {
+    position: absolute;
+    top: 20px;  /* Ustawienie obrazu nad tekstem */
+    z-index: 1; /* Ustawienie, by obrazek był nad tekstem */
 }
 
 #question {
     font-family: 'Caveat', cursive;
     font-size: 52px;
+    z-index: 0; /* Zapewnia, że tekst będzie poniżej obrazu */
 }
 
 #options {
     margin-top: 20px;
+    z-index: 0;
 }
 
 button {
