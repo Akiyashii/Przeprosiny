@@ -59,16 +59,16 @@ button {
 .final-message-text {
     font-family: 'Caveat', cursive;
     font-size: 24px;
-    color: #FFFFFF;  /* Zmieniamy na biały kolor, aby lepiej kontrastował */
+    color: #FF1493;  /* Kolor walentynkowy */
     line-height: 1.5;
     letter-spacing: 0.5px;
     white-space: pre-line;
-    animation: colorChange 5s forwards;
+    animation: fadeIn 2s forwards;
     opacity: 0;
     animation-delay: 5s;
 }
 
-/* Animacje */
+/* Animacja dla "Huraaaaa!! :3" */
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -94,6 +94,30 @@ button {
     50% { color: #FFB6C1; }
     75% { color: #FFC0CB; }
     100% { color: #FF1493; }
+}
+
+/* Animacja "Huraaaaa!!" na stałe pulsująca */
+@keyframes huraAnimation {
+    0% { transform: scale(1); color: #FF1493; }
+    50% { transform: scale(1.2); color: #FF69B4; }
+    100% { transform: scale(1); color: #FF1493; }
+}
+
+/* Styl dla animowanego tekstu "Huraaaaa!!" */
+.hura-text {
+    font-family: 'Caveat', cursive;
+    font-size: 60px;
+    color: #FF1493;
+    animation: huraAnimation 2s infinite; /* Animacja pulsująca */
+}
+
+.love-text {
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+    color: #FF1493;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 3s;
 }
 
 .next-scene-button {
