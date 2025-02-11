@@ -99,7 +99,7 @@ function displayHuraAndLoveText() {
 
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
-    huraText.className = 'caveat-text hura-text';
+    huraText.className = 'caveat-text hura-text'; // Zastosowanie animacji bounce
 
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
