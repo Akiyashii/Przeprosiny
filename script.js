@@ -9,11 +9,11 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
-var takClicked = false; // Flaga do kontrolowania, czy przycisk "Tak" został już kliknięty.
+var takClicked = false;
 
 function selectOption(option) {
     if (option === 'Tak' && !takClicked) {
-        takClicked = true; // Ustaw flagę na true, aby blokować dalsze kliknięcia "Tak"
+        takClicked = true;
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
@@ -31,19 +31,17 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
-    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
+    var newSize = currentFontSize * 0.85; 
     nieButton.style.fontSize = newSize + 'px';
 
     if (newSize <= 5) {
-        nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
+        nieButton.style.display = 'none';
     }
 
-    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
-    var newTakSize = currentTakSize * 1.15; // Powiększ o 15% przy każdym kliknięciu "Nie"
+    var newTakSize = currentTakSize * 1.15; 
     TakButton.style.fontSize = newTakSize + 'px';
 }
 
@@ -61,16 +59,6 @@ function flashRainbowColors(callback) {
             callback();
         }
     }, 2000);
-}
-
-function displayCat() {
-    var imageContainer = document.getElementById('image-container');
-    var catImage = new Image();
-    catImage.src = 'cat.gif';
-    catImage.alt = 'Cat';
-    catImage.onload = function () {
-        imageContainer.appendChild(catImage);
-    };
 }
 
 function displayCatHeart() {
@@ -119,7 +107,7 @@ function displayHuraAndLoveText() {
 
 function displayNextSceneButton() {
     var nextButton = document.createElement('button');
-    nextButton.innerText = "Chciałbym ci jeszcze powiedzieć kilka słów od serca c:";
+    nextButton.innerText = "Reszty dowiesz się na dcku :3";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
     document.body.appendChild(nextButton);
@@ -135,40 +123,6 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
-
-    // Po wyświetleniu obrazu, po 5 sekundach pojawi się wiadomość
-    setTimeout(displayFinalMessage, 5000);
-}
-
-function displayFinalMessage() {
-    // Tworzymy kontener dla wiadomości
-    var finalMessageContainer = document.createElement('div');
-    finalMessageContainer.className = 'final-message-container';
-
-    // Tworzymy tekst wiadomości
-    var finalMessageText = document.createElement('p');
-    finalMessageText.innerText = `Chciałbym ci jeszcze tak na koniec przekazać, że
-    jesteś cudowną osobą, która wniosła wiele 
-    do mojego życia, dałaś mi szczęście, zrozumienie i dużo,
-    dużo więcej, ale się tu nie zmieszczę, więc
-    dziękuję za to wszystko!! >:]
-    Jesteś najcudowniejszą osobą, z jaką
-    miałem do czynienia w ostatnich latach, jesteś super, 
-    nie zmieniaj się :3
-    Noo i oczywiście, postaram się w każdej kwestii, jaka będzie 
-    potrzebna do dania ci szczęścia, Aki <3`;
-    finalMessageText.className = 'final-message-text';
-
-    // Dodajemy tekst do kontenera
-    finalMessageContainer.appendChild(finalMessageText);
-
-    // Umieszczamy kontener na stronie
-    document.body.appendChild(finalMessageContainer);
-
-    // Dodajemy animację zmieniającą kolor tekstu na walentynkowe kolory
-    setTimeout(function () {
-        finalMessageText.style.animation = "colorChange 5s forwards";
-    }, 5000);
 }
 
 displayCat();
