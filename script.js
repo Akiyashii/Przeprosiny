@@ -61,6 +61,16 @@ function flashRainbowColors(callback) {
     }, 2000);
 }
 
+function displayCat() {
+    var imageContainer = document.getElementById('image-container');
+    var catImage = new Image();
+    catImage.src = 'cat.gif';
+    catImage.alt = 'Cat';
+    catImage.onload = function () {
+        imageContainer.appendChild(catImage);
+    };
+}
+
 function displayCatHeart() {
     document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
@@ -125,4 +135,4 @@ function goToNextScene() {
     document.body.appendChild(kotekImage);
 }
 
-displayCat();
+displayCat(); // Ponownie wywołujemy displayCat() po załadowaniu strony, aby obrazek pojawił się na początku.
