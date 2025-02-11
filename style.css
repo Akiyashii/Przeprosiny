@@ -39,15 +39,20 @@ button {
 
 /* Stylowanie dla tekstu na końcu sceny */
 .final-message-container {
-    text-align: center;
-    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: #FFB6C1;
+    background-color: rgba(255, 182, 193, 0.8);
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 800px;
+    text-align: center;
 }
 
 .final-message-text {
@@ -56,7 +61,10 @@ button {
     color: #FF1493;
     line-height: 1.5;
     letter-spacing: 0.5px;
-    white-space: pre-line;  /* Umożliwia łamanie linii w tekście */
+    white-space: pre-line;
+    animation: colorChange 5s forwards;
+    opacity: 0;
+    animation-delay: 5s;
 }
 
 /* Animacje */
@@ -76,4 +84,22 @@ button {
     100% {
         opacity: 1;
     }
+}
+
+/* Nowa animacja zmieniająca kolory na walentynkowe */
+@keyframes colorChange {
+    0% { color: #FF1493; }
+    25% { color: #FF69B4; }
+    50% { color: #FFB6C1; }
+    75% { color: #FFC0CB; }
+    100% { color: #FF1493; }
+}
+
+.next-scene-button {
+    font-size: 32px;
+    background-color: #FF1493;
+    border-radius: 12px;
+    padding: 15px 30px;
+    color: white;
+    cursor: pointer;
 }
