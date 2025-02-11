@@ -39,36 +39,27 @@ button {
 
 /* Stylowanie dla tekstu na końcu sceny */
 .final-message-container {
-    display: flex;
-    align-items: flex-end;  /* Przyklejamy do dołu */
-    justify-content: center;
-    position: absolute;
-    bottom: 20px;  /* Ustawiamy 20px od dołu ekranu */
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
+    margin-top: 30px;
     padding: 20px;
-    background-color: rgba(255, 182, 193, 0.8);
+    background-color: #FFB6C1;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     width: 80%;
-    max-width: 800px;
-    text-align: center;
-    z-index: 999; /* Zapewnia, że wiadomość nie zostanie przykryta przez inne elementy */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .final-message-text {
     font-family: 'Caveat', cursive;
     font-size: 24px;
-    color: #FF1493;  /* Kolor walentynkowy */
+    color: #FF1493;
     line-height: 1.5;
     letter-spacing: 0.5px;
-    white-space: pre-line;
-    animation: fadeIn 2s forwards;
-    opacity: 0;
-    animation-delay: 5s;
+    white-space: pre-line;  /* Umożliwia łamanie linii w tekście */
 }
 
-/* Animacja dla "Huraaaaa!! :3" */
+/* Animacje */
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -85,46 +76,4 @@ button {
     100% {
         opacity: 1;
     }
-}
-
-/* Nowa animacja zmieniająca kolory na walentynkowe */
-@keyframes colorChange {
-    0% { color: #FF1493; }
-    25% { color: #FF69B4; }
-    50% { color: #FFB6C1; }
-    75% { color: #FFC0CB; }
-    100% { color: #FF1493; }
-}
-
-/* Animacja "Huraaaaa!!" na stałe pulsująca */
-@keyframes huraAnimation {
-    0% { transform: scale(1); color: #FF1493; }
-    50% { transform: scale(1.2); color: #FF69B4; }
-    100% { transform: scale(1); color: #FF1493; }
-}
-
-/* Styl dla animowanego tekstu "Huraaaaa!!" */
-.hura-text {
-    font-family: 'Caveat', cursive;
-    font-size: 60px;
-    color: #FF1493;
-    animation: huraAnimation 2s infinite; /* Animacja pulsująca */
-}
-
-.love-text {
-    font-family: 'Caveat', cursive;
-    font-size: 40px;
-    color: #FF1493;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-    animation-delay: 3s;
-}
-
-.next-scene-button {
-    font-size: 32px;
-    background-color: #FF1493;
-    border-radius: 12px;
-    padding: 15px 30px;
-    color: white;
-    cursor: pointer;
 }
