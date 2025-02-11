@@ -9,11 +9,11 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
-var takClicked = false;
+var takClicked = false; // Dodajemy zmienną, która sprawdzi, czy przycisk "Tak" został już kliknięty
 
 function selectOption(option) {
     if (option === 'Tak' && !takClicked) {
-        takClicked = true;
+        takClicked = true; // Oznaczamy, że przycisk "Tak" został kliknięty
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
@@ -28,20 +28,22 @@ function selectOption(option) {
 
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
-    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
+    nieButton.innerText = nieMessages[nieClickCount % nieMessages.length];
     nieClickCount++;
 
+    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
-    var newSize = currentFontSize * 0.85; 
+    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
 
     if (newSize <= 5) {
-        nieButton.style.display = 'none';
+        nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
     }
 
+    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
-    var newTakSize = currentTakSize * 1.15; 
+    var newTakSize = currentTakSize * 1.15; // Powiększ o 15% na kliknięcie
     TakButton.style.fontSize = newTakSize + 'px';
 }
 
@@ -117,7 +119,7 @@ function displayHuraAndLoveText() {
 
 function displayNextSceneButton() {
     var nextButton = document.createElement('button');
-    nextButton.innerText = "Reszty dowiesz się na dcku :3";
+    nextButton.innerText = "Chciałbym ci jeszcze powiedzieć kilka słów od serca c:";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
     document.body.appendChild(nextButton);
@@ -133,6 +135,26 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
-}
 
-displayCat(); // Ponownie wywołujemy displayCat() po załadowaniu strony, aby obrazek pojawił się na początku.
+    // Tworzymy kontener na tekst
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'final-message-container';
+    
+    var finalMessage = document.createElement('p');
+    finalMessage.innerText = "Chciałbym ci jeszcze tak na koniec przekazać, że \n" +
+        "jesteś cudowną osobą, która wniosła wiele \ndo mojego życia, dałaś mi szczęście, zrozumienie i dużo,\n" +
+        "dużo więcej, ale się tu nie zmieszczę, więc\n dziękuję za to wszystko!! >:]\n" +
+        "Jesteś najcudowniejszą osobą, z jaką\n" +
+        "miałem do czynienia w ostatnich latach, jesteś super,\n" +
+        "nie zmieniaj się :3\nNoo i oczywiście, postaram się w każdej kwestii, jaka będzie\n" +
+        "potrzebna do dania ci szczęścia, Aki <3";
+    finalMessage.className = 'final-message';
+    
+    messageContainer.appendChild(finalMessage);
+    document.body.appendChild(messageContainer);
+
+    // Po 5 sekundach, animujemy tekst
+    setTimeout(function () {
+        finalMessage.style.animation = "fadeIn 3s forwards";
+    }, 5000);
+}
