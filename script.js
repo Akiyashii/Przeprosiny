@@ -135,6 +135,40 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
+
+    // Po wyświetleniu obrazu, po 5 sekundach pojawi się wiadomość
+    setTimeout(displayFinalMessage, 5000);
+}
+
+function displayFinalMessage() {
+    // Tworzymy kontener dla wiadomości
+    var finalMessageContainer = document.createElement('div');
+    finalMessageContainer.className = 'final-message-container';
+
+    // Tworzymy tekst wiadomości
+    var finalMessageText = document.createElement('p');
+    finalMessageText.innerText = `Chciałbym ci jeszcze tak na koniec przekazać, że
+    jesteś cudowną osobą, która wniosła wiele 
+    do mojego życia, dałaś mi szczęście, zrozumienie i dużo,
+    dużo więcej, ale się tu nie zmieszczę, więc
+    dziękuję za to wszystko!! >:]
+    Jesteś najcudowniejszą osobą, z jaką
+    miałem do czynienia w ostatnich latach, jesteś super, 
+    nie zmieniaj się :3
+    Noo i oczywiście, postaram się w każdej kwestii, jaka będzie 
+    potrzebna do dania ci szczęścia, Aki <3`;
+    finalMessageText.className = 'final-message-text';
+
+    // Dodajemy tekst do kontenera
+    finalMessageContainer.appendChild(finalMessageText);
+
+    // Umieszczamy kontener na stronie
+    document.body.appendChild(finalMessageContainer);
+
+    // Dodajemy animację zmieniającą kolor tekstu na walentynkowe kolory
+    setTimeout(function () {
+        finalMessageText.style.animation = "colorChange 5s forwards";
+    }, 5000);
 }
 
 displayCat();
