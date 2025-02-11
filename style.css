@@ -40,12 +40,12 @@ button {
 /* Stylowanie dla tekstu na końcu sceny */
 .final-message-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;  /* Przyklejamy do dołu */
     justify-content: center;
     position: absolute;
-    top: 50%;
+    bottom: 20px;  /* Ustawiamy 20px od dołu ekranu */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     padding: 20px;
     background-color: rgba(255, 182, 193, 0.8);
     border-radius: 15px;
@@ -53,12 +53,13 @@ button {
     width: 80%;
     max-width: 800px;
     text-align: center;
+    z-index: 999; /* Zapewnia, że wiadomość nie zostanie przykryta przez inne elementy */
 }
 
 .final-message-text {
     font-family: 'Caveat', cursive;
     font-size: 24px;
-    color: #FF1493;
+    color: #FFFFFF;  /* Zmieniamy na biały kolor, aby lepiej kontrastował */
     line-height: 1.5;
     letter-spacing: 0.5px;
     white-space: pre-line;
