@@ -9,9 +9,11 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
+var takClicked = false; // Flaga do kontrolowania, czy przycisk "Tak" został już kliknięty.
 
 function selectOption(option) {
-    if (option === 'Tak') {
+    if (option === 'Tak' && !takClicked) {
+        takClicked = true; // Ustaw flagę na true, aby blokować dalsze kliknięcia "Tak"
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
@@ -29,7 +31,7 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku "Nie"
+    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
     var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
@@ -38,10 +40,10 @@ function handleNieClick() {
         nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
     }
 
-    // Powiększ przycisk "Tak"
+    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
-    var newTakSize = currentTakSize * 1.15;
+    var newTakSize = currentTakSize * 1.15; // Powiększ o 15% przy każdym kliknięciu "Nie"
     TakButton.style.fontSize = newTakSize + 'px';
 }
 
@@ -59,6 +61,16 @@ function flashRainbowColors(callback) {
             callback();
         }
     }, 2000);
+}
+
+function displayCat() {
+    var imageContainer = document.getElementById('image-container');
+    var catImage = new Image();
+    catImage.src = 'cat.gif';
+    catImage.alt = 'Cat';
+    catImage.onload = function () {
+        imageContainer.appendChild(catImage);
+    };
 }
 
 function displayCatHeart() {
@@ -123,26 +135,6 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
-
-    // Dodajemy tekst pod obrazkiem
-    var messageContainer = document.createElement('div');
-    messageContainer.className = 'final-message-container';
-
-    var finalMessage = document.createElement('p');
-    finalMessage.className = 'final-message-text';
-    finalMessage.innerHTML = `
-        Chciałbym ci jeszcze tak na koniec przekazać, że <br>
-        jesteś cudowną osobą, która wniosła wiele <br>
-        do mojego życia, dałaś mi szczęście, zrozumienie i dużo, <br>
-        dużo więcej, ale się tu nie zmieszczę, więc <br>
-        dziękuję za to wszystko!! >:]<br><br>
-        Jesteś najcudowniejszą osobą, z jaką <br>
-        miałem do czynienia w ostatnich latach, jesteś super, <br>
-        nie zmieniaj się :3 <br><br>
-        Noo i oczywiście, postaram się w każdej kwestii, jaka będzie <br>
-        potrzebna do dania ci szczęścia, Aki <3
-    `;
-
-    messageContainer.appendChild(finalMessage);
-    document.body.appendChild(messageContainer);
 }
+
+displayCat();
