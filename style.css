@@ -77,3 +77,22 @@ button {
         opacity: 1;
     }
 }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* Skok w górę */
+    }
+}
+
+/* Kolorowanie napisów */
+.hura-text {
+    color: #f0768b;
+    animation: bounce 1s infinite; /* Animacja bounce */
+}
+
+.love-text {
+    color: #f0768b;
+}
