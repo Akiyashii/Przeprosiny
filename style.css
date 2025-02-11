@@ -37,43 +37,26 @@ button {
     cursor: pointer;
 }
 
-.message-container {
+/* Stylowanie dla tekstu na końcu sceny */
+.final-message-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #FFB6C1;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.caveat-text {
+.final-message-text {
     font-family: 'Caveat', cursive;
-    color: #FF0000; /* Set text color to bright red */
-}
-
-.hura-text {
-    font-size: 32px;
-    margin-bottom: 5px;
-    color: #FF69B4; /* Różowy */
-    animation: pulse 2s infinite;
-}
-
-.love-text {
-    font-size: 28px;
-    color: #FF1493; /* Ciemny róż */
-    opacity: 0;
-}
-
-.next-scene-button {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 30px;
     font-size: 24px;
-    background-color: #FF69B4;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.kotek-image {
-    max-width: 300px;
-    margin-top: 50px;
+    color: #FF1493;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    white-space: pre-line;  /* Umożliwia łamanie linii w tekście */
 }
 
 /* Animacje */
