@@ -10,14 +10,12 @@ var nieMessages = [
 
 var nieClickCount = 0;
 var takClicked = false; // Flaga do kontrolowania, czy przycisk "Tak" został już kliknięty.
-var audio = new Audio('romantic-music.mp3'); // Muzyka
 
 function selectOption(option) {
     if (option === 'Tak' && !takClicked) {
-        takClicked = true;
-        playMusic(); // Odtwarzanie muzyki
+        takClicked = true; // Ustaw flagę na true, aby blokować dalsze kliknięcia "Tak"
         flashRainbowColors(function () {
-            explodeHearts(); // Eksplozja serduszek
+            document.getElementById('question').style.display = 'none';
             displayCatHeart();
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
@@ -30,10 +28,10 @@ function selectOption(option) {
 
 function handleNieClick() {
     var nieButton = document.getElementById('Nie-button');
-    shakeButton('Nie-button'); // Drżenie przy kliknięciu
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
+    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
     var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
     nieButton.style.fontSize = newSize + 'px';
@@ -42,6 +40,7 @@ function handleNieClick() {
         nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
     }
 
+    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
     var newTakSize = currentTakSize * 1.15; // Powiększ o 15% przy każdym kliknięciu "Nie"
@@ -136,82 +135,6 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
-}
-
-function explodeHearts() {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'hearts-canvas';
-    document.body.appendChild(canvas);
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const ctx = canvas.getContext('2d');
-    const hearts = [];
-
-    class Heart {
-        constructor(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.size = Math.random() * 8 + 5;
-            this.color = color;
-            this.vx = (Math.random() - 0.5) * 4;
-            this.vy = Math.random() * -4 - 2;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            this.size *= 0.96; // Powolne zmniejszanie rozmiaru
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        hearts.forEach((heart, index) => {
-            heart.update();
-            heart.draw();
-            if (heart.size < 1) hearts.splice(index, 1);
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    function spawnHearts(x, y) {
-        const colors = ['#ff7f7f', '#f39ac4', '#fb607f'];
-        for (let i = 0; i < 15; i++) {
-            hearts.push(new Heart(x, y, colors[Math.floor(Math.random() * colors.length)]));
-        }
-    }
-
-    canvas.addEventListener('click', (event) => {
-        spawnHearts(event.clientX, event.clientY);
-    });
-
-    animate();
-
-    // Usuń płótno po kilku sekundach
-    setTimeout(() => {
-        document.body.removeChild(canvas);
-    }, 6000);
-}
-
-function shakeButton(buttonId) {
-    var button = document.getElementById(buttonId);
-    button.classList.add('shake');
-    setTimeout(() => button.classList.remove('shake'), 500);
-}
-
-function playMusic() {
-    audio.play();
-    audio.loop = true; // Powtarzanie muzyki
 }
 
 displayCat();
