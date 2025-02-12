@@ -135,6 +135,18 @@ function goToNextScene() {
     kotekImage.className = 'kotek-image';
 
     document.body.appendChild(kotekImage);
+
+    displayMessageButton(); // Dodanie nowego przycisku
+}
+
+function displayMessageButton() {
+    var messageButton = document.createElement('button');
+    messageButton.innerText = "A tu kilka słów ode mnie <3";
+    messageButton.className = 'next-scene-button';
+    messageButton.onclick = function () {
+        window.location.href = "https://i.postimg.cc/G3XnnLpR/obraz-2025-02-12-020029933.png";
+    };
+    document.body.appendChild(messageButton);
 }
 
 displayCat();
