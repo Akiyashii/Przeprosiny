@@ -119,7 +119,7 @@ function displayHuraAndLoveText() {
 
 function displayNextSceneButton() {
     var nextButton = document.createElement('button');
-    nextButton.innerText = "Więcej dowiesz się na dcku c:";
+    nextButton.innerText = "Daleeeej!! :o";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
     document.body.appendChild(nextButton);
