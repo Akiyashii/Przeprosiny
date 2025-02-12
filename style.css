@@ -43,60 +43,28 @@ button {
     cursor: pointer;
 }
 
-/* Stylowanie dla tekstu na końcu sceny */
-.final-message-container {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #FFB6C1;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.final-message-text {
+/* Styl nowego przycisku */
+.next-scene-button {
+    padding: 10px 20px;
+    font-size: 25px;
     font-family: 'Caveat', cursive;
-    font-size: 24px;
-    color: #FF1493;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-    white-space: pre-line;  /* Umożliwia łamanie linii w tekście */
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
 }
 
 /* Animacje */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-}
-
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px); /* Skok w górę */
-    }
-}
-
-/* Kolorowanie napisów */
 .hura-text {
     color: #f0768b;
-    animation: bounce 1s infinite; /* Animacja bounce */
+    animation: bounce 1s infinite;
 }
 
 .love-text {
