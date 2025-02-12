@@ -19,7 +19,7 @@ function selectOption(option) {
             displayCatHeart();
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
-            setTimeout(displayNextSceneButtons, 4000);
+            setTimeout(displayNextSceneButton, 4000);
         });
     } else if (option === 'Nie') {
         handleNieClick();
@@ -113,25 +113,12 @@ function displayHuraAndLoveText() {
     }, 3000);
 }
 
-function displayNextSceneButtons() {
-    var buttonContainer = document.createElement('div');
-    buttonContainer.className = 'button-container';
-
+function displayNextSceneButton() {
     var nextButton = document.createElement('button');
     nextButton.innerText = "Daleeeeeej!! :3";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
-
-    var messageButton = document.createElement('button');
-    messageButton.innerText = "A tu kilka słów ode mnie <3";
-    messageButton.className = 'next-scene-button';
-    messageButton.onclick = function () {
-        window.location.href = "https://i.postimg.cc/G3XnnLpR/obraz-2025-02-12-020029933.png";
-    };
-
-    buttonContainer.appendChild(nextButton);
-    buttonContainer.appendChild(messageButton);
-    document.body.appendChild(buttonContainer);
+    document.body.appendChild(nextButton);
 }
 
 function goToNextScene() {
@@ -145,7 +132,17 @@ function goToNextScene() {
 
     document.body.appendChild(kotekImage);
 
-    displayNextSceneButtons();
+    setTimeout(displayMessageButton, 2000);
+}
+
+function displayMessageButton() {
+    var messageButton = document.createElement('button');
+    messageButton.innerText = "A tu kilka słów ode mnie <3";
+    messageButton.className = 'next-scene-button';
+    messageButton.onclick = function () {
+        window.location.href = "https://i.postimg.cc/G3XnnLpR/obraz-2025-02-12-020029933.png";
+    };
+    document.body.appendChild(messageButton);
 }
 
 displayCat();
