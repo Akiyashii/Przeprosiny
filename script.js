@@ -9,17 +9,17 @@ var nieMessages = [
 ];
 
 var nieClickCount = 0;
-var takClicked = false; // Flaga do kontrolowania, czy przycisk "Tak" został już kliknięty.
+var takClicked = false;
 
 function selectOption(option) {
     if (option === 'Tak' && !takClicked) {
-        takClicked = true; // Ustaw flagę na true, aby blokować dalsze kliknięcia "Tak"
+        takClicked = true;
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayCatHeart();
             setBackground();
             setTimeout(displayHuraAndLoveText, 500);
-            setTimeout(displayNextSceneButton, 4000);
+            setTimeout(displayNextSceneButtons, 4000);
         });
     } else if (option === 'Nie') {
         handleNieClick();
@@ -31,19 +31,17 @@ function handleNieClick() {
     nieButton.innerText = nieMessages[nieClickCount % nieMessages.length]; 
     nieClickCount++;
 
-    // Zmniejsz rozmiar przycisku
     var currentFontSize = parseFloat(window.getComputedStyle(nieButton).fontSize);
-    var newSize = currentFontSize * 0.85; // Zmniejsz o 15% na kliknięcie
+    var newSize = currentFontSize * 0.85;
     nieButton.style.fontSize = newSize + 'px';
 
     if (newSize <= 5) {
-        nieButton.style.display = 'none'; // Ukryj, gdy stanie się za mały
+        nieButton.style.display = 'none';
     }
 
-    // Dostosuj również "Tak" w odpowiedzi na kliknięcia
     var TakButton = document.getElementById('Tak-button');
     var currentTakSize = parseFloat(window.getComputedStyle(TakButton).fontSize);
-    var newTakSize = currentTakSize * 1.15; // Powiększ o 15% przy każdym kliknięciu "Nie"
+    var newTakSize = currentTakSize * 1.15;
     TakButton.style.fontSize = newTakSize + 'px';
 }
 
@@ -57,9 +55,7 @@ function flashRainbowColors(callback) {
     setTimeout(function () {
         clearInterval(interval);
         document.body.style.backgroundColor = '';
-        if (callback) {
-            callback();
-        }
+        if (callback) callback();
     }, 2000);
 }
 
@@ -99,7 +95,7 @@ function displayHuraAndLoveText() {
 
     var huraText = document.createElement('h1');
     huraText.innerText = 'Huraaaaa!! :3';
-    huraText.className = 'caveat-text hura-text'; // Zastosowanie animacji bounce
+    huraText.className = 'caveat-text hura-text';
 
     var loveText = document.createElement('h2');
     loveText.innerText = 'Kocham Cię <3';
@@ -117,12 +113,25 @@ function displayHuraAndLoveText() {
     }, 3000);
 }
 
-function displayNextSceneButton() {
+function displayNextSceneButtons() {
+    var buttonContainer = document.createElement('div');
+    buttonContainer.className = 'button-container';
+
     var nextButton = document.createElement('button');
-    nextButton.innerText = "Daleeeej!! :o";
+    nextButton.innerText = "Daleeeeeej!! :3";
     nextButton.className = 'next-scene-button';
     nextButton.onclick = goToNextScene;
-    document.body.appendChild(nextButton);
+
+    var messageButton = document.createElement('button');
+    messageButton.innerText = "A tu kilka słów ode mnie <3";
+    messageButton.className = 'next-scene-button';
+    messageButton.onclick = function () {
+        window.location.href = "https://i.postimg.cc/G3XnnLpR/obraz-2025-02-12-020029933.png";
+    };
+
+    buttonContainer.appendChild(nextButton);
+    buttonContainer.appendChild(messageButton);
+    document.body.appendChild(buttonContainer);
 }
 
 function goToNextScene() {
@@ -136,17 +145,7 @@ function goToNextScene() {
 
     document.body.appendChild(kotekImage);
 
-    displayMessageButton(); // Dodanie nowego przycisku
-}
-
-function displayMessageButton() {
-    var messageButton = document.createElement('button');
-    messageButton.innerText = "A tu kilka słów ode mnie <3";
-    messageButton.className = 'next-scene-button';
-    messageButton.onclick = function () {
-        window.location.href = "https://i.postimg.cc/G3XnnLpR/obraz-2025-02-12-020029933.png";
-    };
-    document.body.appendChild(messageButton);
+    displayNextSceneButtons();
 }
 
 displayCat();
