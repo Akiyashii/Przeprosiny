@@ -122,8 +122,8 @@ function displayNextSceneButton() {
 }
 
 function goToNextScene() {
-    document.body.innerHTML = '';
-    document.body.style.backgroundColor = '#FFB6C1';
+    window.location.href = "strona2.html";
+}
 
     var kotekImage = new Image();
     kotekImage.src = 'kotek.png';
