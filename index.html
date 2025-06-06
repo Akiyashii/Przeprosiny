@@ -45,6 +45,19 @@
             font-size: 28px;
             color: #f0768b;
             max-width: 80%;
+            opacity: 0;
+            animation: fadeInSlide 3s ease forwards;
+        }
+
+        @keyframes fadeInSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
