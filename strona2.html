@@ -48,10 +48,22 @@
     .next-button:hover {
       background-color: #ff85c1;
     }
+
+    .play-button {
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 8px 20px;
+      border: none;
+      background-color: #f8a3c3;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Caveat', cursive;
+    }
   </style>
 </head>
 <body>
-  <audio id="bg-music" src="muzyka.mp3" autoplay loop></audio>
+  <audio id="bg-music" src="muzyka.mp3" loop></audio>
 
   <div class="message">
     Już na samym starcie, Skarbie nadal chcę cię tak nazywać, a co za tym idzie być z tobą, 
@@ -70,8 +82,10 @@
     
     Tak już kończąc, to po prostu nie chcę, żeby te wydarzenia zmieniły coś między nami i nas podzieliły, 
     nawet w najgorszych chwilach, nigdy Cię nie zostawię i będę trwał przy tobie bo jesteś miłością mojego życia i pragnę tylko Ciebie. 
-    Kocham cię &lt;3
+    Kocham cię <3
   </div>
+
+  <button class="play-button" onclick="playMusic()">Włącz muzykę</button>
 
   <div class="volume-control">
     <label for="volume">Głośność:</label>
@@ -83,6 +97,12 @@
   <script>
     const music = document.getElementById("bg-music");
     const volumeSlider = document.getElementById("volume");
+
+    function playMusic() {
+      music.play().catch(error => {
+        alert("Przeglądarka zablokowała automatyczne odtwarzanie. Spróbuj kliknąć ponownie.");
+      });
+    }
 
     music.volume = volumeSlider.value;
 
