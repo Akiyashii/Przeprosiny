@@ -2,82 +2,102 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Moje wyznanie</title>
+  <title>Dla Ciebie</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Caveat', cursive;
+      padding: 40px 20px;
       background-image: url('tlo.PNG');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      font-family: 'Caveat', cursive;
+      color: #FF1493;
       text-align: center;
     }
 
     .message {
-      font-size: 26px;
-      color: #B22222;
-      max-width: 85%;
+      max-width: 800px;
+      margin: auto;
+      font-size: 28px;
       background-color: rgba(255, 255, 255, 0.75);
-      padding: 20px;
-      border-radius: 15px;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       white-space: pre-line;
-      animation: fadeIn 3s ease-in-out;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
 
-    .volume-control {
-      margin-top: 20px;
-      background-color: rgba(255, 255, 255, 0.6);
-      padding: 10px 20px;
+    #next-button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: #FF69B4;
+      color: white;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      font-size: 18px;
+      font-size: 24px;
+      font-family: 'Caveat', cursive;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    input[type="range"] {
-      width: 150px;
+    #volume-control {
+      margin-top: 20px;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    #volume-control input {
+      width: 200px;
     }
   </style>
 </head>
 <body>
 
-  <div class="message">
-    Już na samym starcie, Skarbie nadal chcę cię tak nazywać, a co za tym idzie być z tobą, niezmiennie częścią twojego życia, słuchać twoich humorków, opowieści i po prostu być z tobą, jak i również dla Ciebie. Kocham cię, a co za tym idzie serce mi się kraje gdy coś złego się dzieje w twoim życiu, przeżywam wszystko razem z tobą i po prostu zależy mi na TWOIM życiu i zdrowiu, fizycznym jak i psychicznym.
+  <div class="message" id="messageBox"></div>
 
-    Nasze kłótnie często są dziecinne z mojej strony i nie powinno ich wcale być, ale jednak nie dzieją się przez nic. Jak już każdy wie, żaden związek nie jest idealny i chyba aktualnie mamy jakiś kryzys. Niezmiernie mi z tym źle, że często to przeze mnie są wywoływane kłótnie i rzadko mam rację, ale nigdy się nie poddam jeśli chodzi o Ciebie, bo jesteś dla mojego życia dosłownie jak woda dla ryb, powietrze dla wszystkich żyjątek na świecie i po prostu jesteś, robisz moje życie dużo lepszym i bardzo cię za to kocham i doceniam.
-
-    Proszę cię, nie poddawajmy się, a ja postaram się być dla ciebie jak najlepszą wersją siebie, taką którą pokochałaś, a nie taką, która doprowadza cię do płaczu. Tak już kończąc, to po prostu nie chcę, żeby te wydarzenia zmieniły coś między nami i nas podzieliły, nawet w najgorszych chwilach, nigdy Cię nie zostawię i będę trwał przy tobie bo jesteś miłością mojego życia i pragnę tylko Ciebie. Kocham cię &lt;3
+  <div id="volume-control">
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.2">
   </div>
 
-  <div class="volume-control">
-    🎵 Głośność:
-    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3">
-  </div>
+  <a href="strona3.html">
+    <button id="next-button">Next</button>
+  </a>
 
-  <audio id="bgMusic" autoplay loop>
-    <source src="tv-girl.mp3" type="audio/mpeg">
-    Twoja przeglądarka nie obsługuje odtwarzacza audio.
-  </audio>
+  <audio id="bg-music" src="muzyka.mp3" autoplay loop></audio>
 
   <script>
-    const audio = document.getElementById('bgMusic');
-    const volumeSlider = document.getElementById('volumeSlider');
-    audio.volume = 0.3;
-    volumeSlider.addEventListener('input', () => {
+    const text = `Już na samym starcie, Skarbie nadal chcę cie tak nazywać, a co za tym idzie być z tobą, niezmiennie częścią twojego życia, słuchać twoich humorków, opowieści i po prostu być z tobą, jak i również dla Ciebie. 
+Kocham cię, a co za tym idzie serce mi się kraje gdy coś złego się dzieje w twoim życiu, przeżywam wszystko razem z tobą i po prostu zależy mi na TWOIM życiu i zdrowiu, fizycznym jak i psychicznym. 
+Nasze kłótnie często są dziecinne z mojej strony i nie powinno ich wcale być, ale jednak nie dzieją się przez nic. 
+Jak już każdy wie, żaden związek nie jest idealny i chyba aktualnie mamy jakiś kryzys. 
+Niezmiernie mi z tym źle, że często to przeze mnie są wywoływane kłótnie i rzadko mam rację, ale nigdy się nie poddam jeśli chodzi o Ciebie, bo jesteś dla mojego życia dosłownie jak woda dla ryb, powietrze dla wszystkich żyjątek na świecie i po prostu jesteś, robisz moje życie dużo lepszym i bardzo cię za to kocham i doceniam. 
+Proszę cię, nie poddawajmy się, a ja postaram się być dla ciebie jak najlepszą wersją Ciebie, taką którą pokochałaś, a nie taką, która doprowadza cię do płaczu. 
+Tak już kończąc, to po prostu nie chcę, żeby te wydarzenia zmieniły coś między nami i nas podzieliły, nawet w najgorszych chwilach, nigdy Cię nie zostawię i będę trwał przy tobie bo jesteś miłością mojego życia i pragnę tylko Ciebie. 
+Kocham cię <3`;
+
+    const box = document.getElementById("messageBox");
+    let index = 0;
+
+    function showNextChunk() {
+      const chunkSize = 8;
+      if (index < text.length) {
+        box.textContent += text.slice(index, index + chunkSize);
+        index += chunkSize;
+        setTimeout(showNextChunk, 50);
+      }
+    }
+
+    showNextChunk();
+
+    const audio = document.getElementById("bg-music");
+    const volumeSlider = document.getElementById("volumeSlider");
+
+    volumeSlider.addEventListener("input", () => {
       audio.volume = volumeSlider.value;
+    });
+
+    // Autoplay policy workaround for some browsers
+    window.addEventListener("click", () => {
+      if (audio.paused) audio.play();
     });
   </script>
 
