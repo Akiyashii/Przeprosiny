@@ -1,23 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natalia, zostaniesz mojom walentynkom?</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
-    <link rel="stylesheet" href="style.css">
+    <title>Witaj Skarbie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FADADD;
+            font-family: 'Caveat', cursive;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 28px;
+            background-color: #FB607F;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Caveat', cursive;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <div id="container">
-        <div id="image-container"></div>
-        <div id="text-container">
-            <div id="question">Natalia, zostaniesz mojom walentynkom?</div>
-            <div id="options">
-                <button id="Tak-button" onclick="selectOption('Tak')">Tak</button>
-                <button id="Nie-button" onclick="selectOption('Nie')">Nie</button>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <img src="cat.gif" alt="Słodki kotek">
+    <button onclick="window.location.href='strona2.html'">Dalej</button>
 </body>
 </html>
