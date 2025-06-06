@@ -1,52 +1,88 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Moje wyznanie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #FFC0CB;
-            margin: 0;
-            padding: 0;
-            font-family: 'Caveat', cursive;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <title>Moje wyznanie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Caveat', cursive;
+      background-image: url('koteu.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        .message {
-            font-size: 26px;
-            color: #B22222;
-            max-width: 90%;
-            white-space: pre-line;
-            animation: fadeIn 4s ease-in-out;
-        }
+    .message {
+      font-size: 26px;
+      color: #B22222;
+      max-width: 85%;
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 20px;
+      border-radius: 15px;
+      white-space: pre-line;
+      animation: fadeIn 3s ease-in-out;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    .volume-control {
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-size: 18px;
+    }
+
+    input[type="range"] {
+      width: 150px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="message">
-        Już na samym starcie, Skarbie nadal chcę cię tak nazywać, a co za tym idzie być z tobą, niezmiennie częścią twojego życia, słuchać twoich humorków, opowieści i po prostu być z tobą, jak i również dla Ciebie. Kocham cię, a co za tym idzie serce mi się kraje gdy coś złego się dzieje w twoim życiu, przeżywam wszystko razem z tobą i po prostu zależy mi na TWOIM życiu i zdrowiu, fizycznym jak i psychicznym.
+  <div class="message">
+    Już na samym starcie, Skarbie nadal chcę cię tak nazywać, a co za tym idzie być z tobą, niezmiennie częścią twojego życia, słuchać twoich humorków, opowieści i po prostu być z tobą, jak i również dla Ciebie. Kocham cię, a co za tym idzie serce mi się kraje gdy coś złego się dzieje w twoim życiu, przeżywam wszystko razem z tobą i po prostu zależy mi na TWOIM życiu i zdrowiu, fizycznym jak i psychicznym.
 
-        Nasze kłótnie często są dziecinne z mojej strony i nie powinno ich wcale być, ale jednak nie dzieją się przez nic. Jak już każdy wie, żaden związek nie jest idealny i chyba aktualnie mamy jakiś kryzys. Niezmiernie mi z tym źle, że często to przeze mnie są wywoływane kłótnie i rzadko mam rację, ale nigdy się nie poddam jeśli chodzi o Ciebie, bo jesteś dla mojego życia dosłownie jak woda dla ryb, powietrze dla wszystkich żyjątek na świecie i po prostu jesteś, robisz moje życie dużo lepszym i bardzo cię za to kocham i doceniam.
+    Nasze kłótnie często są dziecinne z mojej strony i nie powinno ich wcale być, ale jednak nie dzieją się przez nic. Jak już każdy wie, żaden związek nie jest idealny i chyba aktualnie mamy jakiś kryzys. Niezmiernie mi z tym źle, że często to przeze mnie są wywoływane kłótnie i rzadko mam rację, ale nigdy się nie poddam jeśli chodzi o Ciebie, bo jesteś dla mojego życia dosłownie jak woda dla ryb, powietrze dla wszystkich żyjątek na świecie i po prostu jesteś, robisz moje życie dużo lepszym i bardzo cię za to kocham i doceniam.
 
-        Proszę cię, nie poddawajmy się, a ja postaram się być dla ciebie jak najlepszą wersją siebie, taką którą pokochałaś, a nie taką, która doprowadza cię do płaczu. Tak już kończąc, to po prostu nie chcę, żeby te wydarzenia zmieniły coś między nami i nas podzieliły, nawet w najgorszych chwilach, nigdy Cię nie zostawię i będę trwał przy tobie bo jesteś miłością mojego życia i pragnę tylko Ciebie. Kocham cię <3
-    </div>
+    Proszę cię, nie poddawajmy się, a ja postaram się być dla ciebie jak najlepszą wersją siebie, taką którą pokochałaś, a nie taką, która doprowadza cię do płaczu. Tak już kończąc, to po prostu nie chcę, żeby te wydarzenia zmieniły coś między nami i nas podzieliły, nawet w najgorszych chwilach, nigdy Cię nie zostawię i będę trwał przy tobie bo jesteś miłością mojego życia i pragnę tylko Ciebie. Kocham cię &lt;3
+  </div>
 
-    <!-- Muzyka z lokalnego pliku -->
-    <audio autoplay loop>
-        <source src="tv-girl.mp3" type="audio/mpeg">
-        Twoja przeglądarka nie obsługuje odtwarzacza audio.
-    </audio>
+  <div class="volume-control">
+    🎵 Głośność:
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3">
+  </div>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="tv-girl.mp3" type="audio/mpeg">
+    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+  </audio>
+
+  <script>
+    const audio = document.getElementById('bgMusic');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    // Ustaw domyślną głośność
+    audio.volume = 0.3;
+
+    volumeSlider.addEventListener('input', () => {
+      audio.volume = volumeSlider.value;
+    });
+  </script>
 
 </body>
 </html>
