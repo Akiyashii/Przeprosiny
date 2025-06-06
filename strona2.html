@@ -26,27 +26,10 @@
       white-space: pre-line;
       line-height: 1.8;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      display: none;
     }
 
-    .volume-control, .next-button {
-      display: none;
-    }
-
-    #start-btn {
-      font-size: 28px;
-      padding: 12px 32px;
-      background-color: #FF69B4;
-      color: white;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-family: 'Caveat', cursive;
-      margin-top: 100px;
-    }
-
-    #start-btn:hover {
-      background-color: #ff85c1;
+    .volume-control {
+      margin-top: 30px;
     }
 
     .next-button {
@@ -68,12 +51,10 @@
   </style>
 </head>
 <body>
-  <!-- Muzyka -->
-  <audio id="bg-music" src="muzyka.mp3" loop></audio>
+  <!-- Muzyka w tle -->
+  <audio id="bg-music" src="muzyka.mp3" autoplay loop></audio>
 
-  <button id="start-btn">Rozpocznij</button>
-
-  <div class="message" id="tekst">
+  <div class="message">
     Już na samym starcie, Skarbie nadal chcę cię tak nazywać, a co za tym idzie być z tobą, 
     niezmiennie częścią twojego życia, słuchać twoich humorków, opowieści i po prostu być z tobą, 
     jak i również dla Ciebie. Kocham cię, a co za tym idzie serce mi się kraje gdy coś złego się dzieje w twoim życiu, 
@@ -102,26 +83,21 @@
 
   <script>
     const music = document.getElementById("bg-music");
-    const startBtn = document.getElementById("start-btn");
-    const tekst = document.getElementById("tekst");
     const volumeSlider = document.getElementById("volume");
-    const nextButton = document.querySelector(".next-button");
-    const volumeDiv = document.querySelector(".volume-control");
 
-    startBtn.addEventListener("click", () => {
-      music.volume = volumeSlider.value;
-      music.play().then(() => {
-        tekst.style.display = "block";
-        nextButton.style.display = "inline-block";
-        volumeDiv.style.display = "block";
-        startBtn.style.display = "none";
-      }).catch((e) => {
-        alert("Twoja przeglądarka zablokowała odtwarzanie. Spróbuj kliknąć ponownie.");
-      });
+    // Ustawienie początkowej głośności
+    music.volume = volumeSlider.value;
+
+    // Zmiana głośności suwaka
+    volumeSlider.addEventListener("input", function () {
+      music.volume = this.value;
     });
 
-    volumeSlider.addEventListener("input", () => {
-      music.volume = volumeSlider.value;
+    // Spróbuj odtworzyć dźwięk po załadowaniu
+    window.addEventListener("load", () => {
+      music.play().catch(() => {
+        console.warn("Autoodtwarzanie może być zablokowane przez przeglądarkę.");
+      });
     });
   </script>
 </body>
